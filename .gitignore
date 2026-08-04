@@ -1,0 +1,39 @@
+# Vivado project files
+vivado_project/
+*.jou
+*.log
+*.str
+*.xpr
+*.cache/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+*.srcs/
+*.gen/
+*.bit
+*.hwh
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+env/
+
+# Python output directories
+python/data/
+python/models/
+python/plots/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Implementation guide (local only)
+/home/aarushlenka/GitRepos/ro-puf/RO_PUF_ML_RL_Implementation.md
+RO_PUF_ML_RL_Implementation.md
