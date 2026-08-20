@@ -1,18 +1,18 @@
-# Vivado project files
-vivado_project/
-*.jou
-*.log
-*.str
-*.xpr
+# Vivado generated/build output (safe to ignore — all regeneratable)
 *.cache/
+*.gen/
 *.hw/
 *.ip_user_files/
 *.runs/
 *.sim/
-*.srcs/
-*.gen/
 *.bit
 *.hwh
+*.xsa
+*.jou
+*.log
+*.str
+
+# Keep: *.xpr (project file) and *.srcs/ (source files + block design) ARE committed
 
 # Python
 __pycache__/
