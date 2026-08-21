@@ -1,0 +1,1515 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "crp_collection_data_path",
+        "label": "CRP Collection Data Path (host to PUF array)",
+        "nodes": [
+          "python_01_collect_crps_query_puf",
+          "puf_schematic_zynq_ps",
+          "puf_schematic_axi_gpio",
+          "puf_schematic_puf_top_ip",
+          "verilog_puf_driver_puf_driver"
+        ],
+        "relation": "participate_in",
+        "confidence": "INFERRED",
+        "confidence_score": 0.75,
+        "source_file": "puf schematic.pdf"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "clock_div_2.v",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/clock_div_2.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_clock_div_2",
+      "community": 9,
+      "norm_label": "clock_div_2.v"
+    },
+    {
+      "label": "clock_div_2",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/clock_div_2.v",
+      "source_location": "L3",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_clock_div_2_clock_div_2",
+      "community": 9,
+      "norm_label": "clock_div_2"
+    },
+    {
+      "label": "puf_array.v",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_array.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_array",
+      "community": 10,
+      "norm_label": "puf_array.v"
+    },
+    {
+      "label": "puf_array",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_array.v",
+      "source_location": "L7",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_array_puf_array",
+      "community": 10,
+      "norm_label": "puf_array"
+    },
+    {
+      "label": "puf_array_xor.v",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_array_xor.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_array_xor",
+      "community": 11,
+      "norm_label": "puf_array_xor.v"
+    },
+    {
+      "label": "puf_array_xor",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_array_xor.v",
+      "source_location": "L3",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_array_xor_puf_array_xor",
+      "community": 11,
+      "norm_label": "puf_array_xor"
+    },
+    {
+      "label": "puf_cell.v",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_cell.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_cell",
+      "community": 12,
+      "norm_label": "puf_cell.v"
+    },
+    {
+      "label": "puf_cell",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_cell.v",
+      "source_location": "L3",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_cell_puf_cell",
+      "community": 12,
+      "norm_label": "puf_cell"
+    },
+    {
+      "label": "puf_driver.v",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_driver.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_driver",
+      "community": 13,
+      "norm_label": "puf_driver.v"
+    },
+    {
+      "label": "puf_driver",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_driver.v",
+      "source_location": "L9",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_driver_puf_driver",
+      "community": 13,
+      "norm_label": "puf_driver"
+    },
+    {
+      "label": "puf_top.v",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_top.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_top",
+      "community": 1,
+      "norm_label": "puf_top.v"
+    },
+    {
+      "label": "puf_top",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_top.v",
+      "source_location": "L3",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_top_puf_top",
+      "community": 1,
+      "norm_label": "puf_top"
+    },
+    {
+      "label": "puf_driver",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_top.v",
+      "source_location": "L13",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_top_v_puf_driver",
+      "community": 1,
+      "norm_label": "puf_driver"
+    },
+    {
+      "label": "puf_array",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/puf_top.v",
+      "source_location": "L18",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_puf_top_v_puf_array",
+      "community": 1,
+      "norm_label": "puf_array"
+    },
+    {
+      "label": "ring_osc.v",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/ring_osc.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_ring_osc",
+      "community": 5,
+      "norm_label": "ring_osc.v"
+    },
+    {
+      "label": "ring_osc",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/ring_osc.v",
+      "source_location": "L7",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_ring_osc_ring_osc",
+      "community": 5,
+      "norm_label": "ring_osc"
+    },
+    {
+      "label": "clock_div_2",
+      "file_type": "code",
+      "source_file": "PUF_HOME/verilog/ring_osc.v",
+      "source_location": "L28",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "puf_home_verilog_ring_osc_v_clock_div_2",
+      "community": 5,
+      "norm_label": "clock_div_2"
+    },
+    {
+      "label": "01_collect_crps.py",
+      "file_type": "code",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "python_01_collect_crps",
+      "community": 0,
+      "norm_label": "01_collect_crps.py"
+    },
+    {
+      "label": "query_puf()",
+      "file_type": "code",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "python_01_collect_crps_query_puf",
+      "community": 0,
+      "norm_label": "query_puf()"
+    },
+    {
+      "label": "majority_vote()",
+      "file_type": "code",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "python_01_collect_crps_majority_vote",
+      "community": 0,
+      "norm_label": "majority_vote()"
+    },
+    {
+      "label": "Send one challenge, wait for the done flag, return the 8-bit response.",
+      "file_type": "rationale",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "python_01_collect_crps_rationale_19",
+      "community": 0,
+      "norm_label": "send one challenge, wait for the done flag, return the 8-bit response."
+    },
+    {
+      "label": "For each of the 8 bit positions, take whichever value (0 or 1) appeared     in m",
+      "file_type": "rationale",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L32",
+      "_origin": "ast",
+      "id": "python_01_collect_crps_rationale_32",
+      "community": 0,
+      "norm_label": "for each of the 8 bit positions, take whichever value (0 or 1) appeared     in m"
+    },
+    {
+      "label": "02_ml_attack.py",
+      "file_type": "code",
+      "source_file": "python/02_ml_attack.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "python_02_ml_attack",
+      "community": 6,
+      "norm_label": "02_ml_attack.py"
+    },
+    {
+      "label": "int_to_bits()",
+      "file_type": "code",
+      "source_file": "python/02_ml_attack.py",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "python_02_ml_attack_int_to_bits",
+      "community": 6,
+      "norm_label": "int_to_bits()"
+    },
+    {
+      "label": "8-bit integer -> list of 8 individual bits (MSB first).",
+      "file_type": "rationale",
+      "source_file": "python/02_ml_attack.py",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "python_02_ml_attack_rationale_20",
+      "community": 6,
+      "norm_label": "8-bit integer -> list of 8 individual bits (msb first)."
+    },
+    {
+      "label": "03_defense_verification.py",
+      "file_type": "code",
+      "source_file": "python/03_defense_verification.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "python_03_defense_verification",
+      "community": 7,
+      "norm_label": "03_defense_verification.py"
+    },
+    {
+      "label": "load_and_prepare()",
+      "file_type": "code",
+      "source_file": "python/03_defense_verification.py",
+      "source_location": "L10",
+      "_origin": "ast",
+      "id": "python_03_defense_verification_load_and_prepare",
+      "community": 7,
+      "norm_label": "load_and_prepare()"
+    },
+    {
+      "label": "run_attack()",
+      "file_type": "code",
+      "source_file": "python/03_defense_verification.py",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "python_03_defense_verification_run_attack",
+      "community": 7,
+      "norm_label": "run_attack()"
+    },
+    {
+      "label": "04_rl_challenge_selection.py",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection",
+      "community": 3,
+      "norm_label": "04_rl_challenge_selection.py"
+    },
+    {
+      "label": "query_puf_simulated()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_query_puf_simulated",
+      "community": 3,
+      "norm_label": "query_puf_simulated()"
+    },
+    {
+      "label": "entropy_score()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_entropy_score",
+      "community": 3,
+      "norm_label": "entropy_score()"
+    },
+    {
+      "label": "get_reward()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L42",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_get_reward",
+      "community": 3,
+      "norm_label": "get_reward()"
+    },
+    {
+      "label": "QLearningChallengeSelector",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L66",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_qlearningchallengeselector",
+      "community": 4,
+      "norm_label": "qlearningchallengeselector"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L67",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_qlearningchallengeselector_init",
+      "community": 4,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".select_action()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L74",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_qlearningchallengeselector_select_action",
+      "community": 4,
+      "norm_label": ".select_action()"
+    },
+    {
+      "label": ".update()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_qlearningchallengeselector_update",
+      "community": 4,
+      "norm_label": ".update()"
+    },
+    {
+      "label": ".get_top_k()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_qlearningchallengeselector_get_top_k",
+      "community": 4,
+      "norm_label": ".get_top_k()"
+    },
+    {
+      "label": "evaluate_set()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L110",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_evaluate_set",
+      "community": 3,
+      "norm_label": "evaluate_set()"
+    },
+    {
+      "label": "QNetwork",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L167",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_qnetwork",
+      "community": 2,
+      "norm_label": "qnetwork"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L169",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_qnetwork_init",
+      "community": 2,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".forward()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L176",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_qnetwork_forward",
+      "community": 2,
+      "norm_label": ".forward()"
+    },
+    {
+      "label": "DQNAgent",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L179",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_dqnagent",
+      "community": 2,
+      "norm_label": "dqnagent"
+    },
+    {
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L180",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_dqnagent_init",
+      "community": 2,
+      "norm_label": ".__init__()"
+    },
+    {
+      "label": ".select_action()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L187",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_dqnagent_select_action",
+      "community": 2,
+      "norm_label": ".select_action()"
+    },
+    {
+      "label": ".remember()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L194",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_dqnagent_remember",
+      "community": 2,
+      "norm_label": ".remember()"
+    },
+    {
+      "label": ".train_step()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L197",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_dqnagent_train_step",
+      "community": 2,
+      "norm_label": ".train_step()"
+    },
+    {
+      "label": ".get_top_k()",
+      "file_type": "code",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L208",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_dqnagent_get_top_k",
+      "community": 2,
+      "norm_label": ".get_top_k()"
+    },
+    {
+      "label": "One simulated noisy query. Uses the real per-challenge stability score     from",
+      "file_type": "rationale",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_rationale_22",
+      "community": 3,
+      "norm_label": "one simulated noisy query. uses the real per-challenge stability score     from"
+    },
+    {
+      "label": "1.0 if exactly 4 of 8 bits are 1 (perfectly balanced), 0.0 if all-0 or all-1.",
+      "file_type": "rationale",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L38",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_rationale_38",
+      "community": 3,
+      "norm_label": "1.0 if exactly 4 of 8 bits are 1 (perfectly balanced), 0.0 if all-0 or all-1."
+    },
+    {
+      "label": "Query the challenge n_samples times, majority-vote to find the stable     respon",
+      "file_type": "rationale",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L43",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_rationale_43",
+      "community": 3,
+      "norm_label": "query the challenge n_samples times, majority-vote to find the stable     respon"
+    },
+    {
+      "label": "Maps a one-hot challenge encoding to an estimated Q-value per challenge.",
+      "file_type": "rationale",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L168",
+      "_origin": "ast",
+      "id": "python_04_rl_challenge_selection_rationale_168",
+      "community": 2,
+      "norm_label": "maps a one-hot challenge encoding to an estimated q-value per challenge."
+    },
+    {
+      "label": "clock_div_2.v",
+      "file_type": "code",
+      "source_file": "verilog/clock_div_2.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_clock_div_2",
+      "community": 14,
+      "norm_label": "clock_div_2.v"
+    },
+    {
+      "label": "clock_div_2",
+      "file_type": "code",
+      "source_file": "verilog/clock_div_2.v",
+      "source_location": "L3",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_clock_div_2_clock_div_2",
+      "community": 14,
+      "norm_label": "clock_div_2"
+    },
+    {
+      "label": "puf_array.v",
+      "file_type": "code",
+      "source_file": "verilog/puf_array.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_array",
+      "community": 15,
+      "norm_label": "puf_array.v"
+    },
+    {
+      "label": "puf_array",
+      "file_type": "code",
+      "source_file": "verilog/puf_array.v",
+      "source_location": "L7",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_array_puf_array",
+      "community": 15,
+      "norm_label": "puf_array"
+    },
+    {
+      "label": "puf_array_xor.v",
+      "file_type": "code",
+      "source_file": "verilog/puf_array_xor.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_array_xor",
+      "community": 16,
+      "norm_label": "puf_array_xor.v"
+    },
+    {
+      "label": "puf_array_xor",
+      "file_type": "code",
+      "source_file": "verilog/puf_array_xor.v",
+      "source_location": "L3",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_array_xor_puf_array_xor",
+      "community": 16,
+      "norm_label": "puf_array_xor"
+    },
+    {
+      "label": "puf_cell.v",
+      "file_type": "code",
+      "source_file": "verilog/puf_cell.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_cell",
+      "community": 17,
+      "norm_label": "puf_cell.v"
+    },
+    {
+      "label": "puf_cell",
+      "file_type": "code",
+      "source_file": "verilog/puf_cell.v",
+      "source_location": "L3",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_cell_puf_cell",
+      "community": 17,
+      "norm_label": "puf_cell"
+    },
+    {
+      "label": "puf_driver.v",
+      "file_type": "code",
+      "source_file": "verilog/puf_driver.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_driver",
+      "community": 0,
+      "norm_label": "puf_driver.v"
+    },
+    {
+      "label": "puf_driver",
+      "file_type": "code",
+      "source_file": "verilog/puf_driver.v",
+      "source_location": "L9",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_driver_puf_driver",
+      "community": 0,
+      "norm_label": "puf_driver"
+    },
+    {
+      "label": "puf_top.v",
+      "file_type": "code",
+      "source_file": "verilog/puf_top.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_top",
+      "community": 1,
+      "norm_label": "puf_top.v"
+    },
+    {
+      "label": "puf_top",
+      "file_type": "code",
+      "source_file": "verilog/puf_top.v",
+      "source_location": "L3",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_top_puf_top",
+      "community": 1,
+      "norm_label": "puf_top"
+    },
+    {
+      "label": "puf_driver",
+      "file_type": "code",
+      "source_file": "verilog/puf_top.v",
+      "source_location": "L13",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_top_v_puf_driver",
+      "community": 1,
+      "norm_label": "puf_driver"
+    },
+    {
+      "label": "puf_array",
+      "file_type": "code",
+      "source_file": "verilog/puf_top.v",
+      "source_location": "L18",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_puf_top_v_puf_array",
+      "community": 1,
+      "norm_label": "puf_array"
+    },
+    {
+      "label": "ring_osc.v",
+      "file_type": "code",
+      "source_file": "verilog/ring_osc.v",
+      "source_location": "L1",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_ring_osc",
+      "community": 8,
+      "norm_label": "ring_osc.v"
+    },
+    {
+      "label": "ring_osc",
+      "file_type": "code",
+      "source_file": "verilog/ring_osc.v",
+      "source_location": "L7",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_ring_osc_ring_osc",
+      "community": 8,
+      "norm_label": "ring_osc"
+    },
+    {
+      "label": "clock_div_2",
+      "file_type": "code",
+      "source_file": "verilog/ring_osc.v",
+      "source_location": "L28",
+      "confidence_score": 1.0,
+      "_origin": "ast",
+      "id": "verilog_ring_osc_v_clock_div_2",
+      "community": 8,
+      "norm_label": "clock_div_2"
+    },
+    {
+      "label": "ro-puf (Ring Oscillator PUF Project)",
+      "file_type": "concept",
+      "source_file": "README.md",
+      "source_location": "README.md:1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "readme_ro_puf",
+      "community": 1,
+      "norm_label": "ro-puf (ring oscillator puf project)"
+    },
+    {
+      "label": "puf_bd Vivado Block Design",
+      "file_type": "concept",
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "puf_schematic_puf_bd",
+      "community": 0,
+      "norm_label": "puf_bd vivado block design"
+    },
+    {
+      "label": "Zynq7 Processing System",
+      "file_type": "concept",
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "puf_schematic_zynq_ps",
+      "community": 0,
+      "norm_label": "zynq7 processing system"
+    },
+    {
+      "label": "AXI GPIO Challenge/Response Interface",
+      "file_type": "concept",
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "puf_schematic_axi_gpio",
+      "community": 0,
+      "norm_label": "axi gpio challenge/response interface"
+    },
+    {
+      "label": "PUF Top IP Instance",
+      "file_type": "concept",
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "puf_schematic_puf_top_ip",
+      "community": 1,
+      "norm_label": "puf top ip instance"
+    },
+    {
+      "label": "AXI Interconnect",
+      "file_type": "concept",
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "puf_schematic_axi_interconnect",
+      "community": 0,
+      "norm_label": "axi interconnect"
+    },
+    {
+      "label": "Processor System Reset",
+      "file_type": "concept",
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "puf_schematic_proc_sys_reset",
+      "community": 0,
+      "norm_label": "processor system reset"
+    }
+  ],
+  "links": [
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/clock_div_2.v",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "puf_home_verilog_clock_div_2",
+      "target": "puf_home_verilog_clock_div_2_clock_div_2"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/puf_array.v",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "puf_home_verilog_puf_array",
+      "target": "puf_home_verilog_puf_array_puf_array"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/puf_array_xor.v",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "puf_home_verilog_puf_array_xor",
+      "target": "puf_home_verilog_puf_array_xor_puf_array_xor"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/puf_cell.v",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "puf_home_verilog_puf_cell",
+      "target": "puf_home_verilog_puf_cell_puf_cell"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/puf_driver.v",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "puf_home_verilog_puf_driver",
+      "target": "puf_home_verilog_puf_driver_puf_driver"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/puf_top.v",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "puf_home_verilog_puf_top",
+      "target": "puf_home_verilog_puf_top_puf_top"
+    },
+    {
+      "relation": "instantiates",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/puf_top.v",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "puf_home_verilog_puf_top_puf_top",
+      "target": "puf_home_verilog_puf_top_v_puf_array"
+    },
+    {
+      "relation": "instantiates",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/puf_top.v",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "puf_home_verilog_puf_top_puf_top",
+      "target": "puf_home_verilog_puf_top_v_puf_driver"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_puf_top_ip",
+      "target": "puf_home_verilog_puf_top_puf_top"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/ring_osc.v",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "puf_home_verilog_ring_osc",
+      "target": "puf_home_verilog_ring_osc_ring_osc"
+    },
+    {
+      "relation": "instantiates",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "PUF_HOME/verilog/ring_osc.v",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "puf_home_verilog_ring_osc_ring_osc",
+      "target": "puf_home_verilog_ring_osc_v_clock_div_2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "python_01_collect_crps",
+      "target": "python_01_collect_crps_majority_vote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "python_01_collect_crps",
+      "target": "python_01_collect_crps_query_puf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_axi_gpio",
+      "target": "python_01_collect_crps_query_puf"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_zynq_ps",
+      "target": "python_01_collect_crps_query_puf"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "python_01_collect_crps_rationale_19",
+      "target": "python_01_collect_crps_query_puf",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "python/01_collect_crps.py",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "python_01_collect_crps_rationale_32",
+      "target": "python_01_collect_crps_majority_vote",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/02_ml_attack.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "python_02_ml_attack",
+      "target": "python_02_ml_attack_int_to_bits",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "python/02_ml_attack.py",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "python_02_ml_attack_rationale_20",
+      "target": "python_02_ml_attack_int_to_bits",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/03_defense_verification.py",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "python_03_defense_verification",
+      "target": "python_03_defense_verification_load_and_prepare",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/03_defense_verification.py",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "python_03_defense_verification",
+      "target": "python_03_defense_verification_run_attack",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L179",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection",
+      "target": "python_04_rl_challenge_selection_dqnagent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection",
+      "target": "python_04_rl_challenge_selection_entropy_score",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L110",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection",
+      "target": "python_04_rl_challenge_selection_evaluate_set",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection",
+      "target": "python_04_rl_challenge_selection_get_reward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection",
+      "target": "python_04_rl_challenge_selection_qlearningchallengeselector",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L167",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection",
+      "target": "python_04_rl_challenge_selection_qnetwork",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection",
+      "target": "python_04_rl_challenge_selection_query_puf_simulated",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_get_reward",
+      "target": "python_04_rl_challenge_selection_query_puf_simulated",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_rationale_22",
+      "target": "python_04_rl_challenge_selection_query_puf_simulated",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_get_reward",
+      "target": "python_04_rl_challenge_selection_entropy_score",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_rationale_38",
+      "target": "python_04_rl_challenge_selection_entropy_score",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L114",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_evaluate_set",
+      "target": "python_04_rl_challenge_selection_get_reward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_rationale_43",
+      "target": "python_04_rl_challenge_selection_get_reward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_qlearningchallengeselector",
+      "target": "python_04_rl_challenge_selection_qlearningchallengeselector_get_top_k",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_qlearningchallengeselector",
+      "target": "python_04_rl_challenge_selection_qlearningchallengeselector_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_qlearningchallengeselector",
+      "target": "python_04_rl_challenge_selection_qlearningchallengeselector_select_action",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L79",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_qlearningchallengeselector",
+      "target": "python_04_rl_challenge_selection_qlearningchallengeselector_update",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L183",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_dqnagent_init",
+      "target": "python_04_rl_challenge_selection_qnetwork",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L176",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_qnetwork",
+      "target": "python_04_rl_challenge_selection_qnetwork_forward",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L169",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_qnetwork",
+      "target": "python_04_rl_challenge_selection_qnetwork_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L168",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_rationale_168",
+      "target": "python_04_rl_challenge_selection_qnetwork",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L170",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_qnetwork_init",
+      "target": "python_04_rl_challenge_selection_dqnagent_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L208",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_dqnagent",
+      "target": "python_04_rl_challenge_selection_dqnagent_get_top_k",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L180",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_dqnagent",
+      "target": "python_04_rl_challenge_selection_dqnagent_init",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L194",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_dqnagent",
+      "target": "python_04_rl_challenge_selection_dqnagent_remember",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L187",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_dqnagent",
+      "target": "python_04_rl_challenge_selection_dqnagent_select_action",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "python/04_rl_challenge_selection.py",
+      "source_location": "L197",
+      "weight": 1.0,
+      "source": "python_04_rl_challenge_selection_dqnagent",
+      "target": "python_04_rl_challenge_selection_dqnagent_train_step",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/clock_div_2.v",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "verilog_clock_div_2",
+      "target": "verilog_clock_div_2_clock_div_2"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/puf_array.v",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "verilog_puf_array",
+      "target": "verilog_puf_array_puf_array"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/puf_array_xor.v",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "verilog_puf_array_xor",
+      "target": "verilog_puf_array_xor_puf_array_xor"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/puf_cell.v",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "verilog_puf_cell",
+      "target": "verilog_puf_cell_puf_cell"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/puf_driver.v",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "verilog_puf_driver",
+      "target": "verilog_puf_driver_puf_driver"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_axi_gpio",
+      "target": "verilog_puf_driver_puf_driver"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/puf_top.v",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "verilog_puf_top",
+      "target": "verilog_puf_top_puf_top"
+    },
+    {
+      "relation": "implements",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_puf_top_ip",
+      "target": "verilog_puf_top_puf_top"
+    },
+    {
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "README.md",
+      "source_location": "README.md:1",
+      "weight": 1.0,
+      "source": "readme_ro_puf",
+      "target": "verilog_puf_top_puf_top"
+    },
+    {
+      "relation": "instantiates",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/puf_top.v",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "verilog_puf_top_puf_top",
+      "target": "verilog_puf_top_v_puf_array"
+    },
+    {
+      "relation": "instantiates",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/puf_top.v",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "verilog_puf_top_puf_top",
+      "target": "verilog_puf_top_v_puf_driver"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/ring_osc.v",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "verilog_ring_osc",
+      "target": "verilog_ring_osc_ring_osc"
+    },
+    {
+      "relation": "instantiates",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "verilog/ring_osc.v",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "verilog_ring_osc_ring_osc",
+      "target": "verilog_ring_osc_v_clock_div_2"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_puf_bd",
+      "target": "puf_schematic_axi_gpio"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_puf_bd",
+      "target": "puf_schematic_axi_interconnect"
+    },
+    {
+      "relation": "references",
+      "confidence": "AMBIGUOUS",
+      "confidence_score": 0.3,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_puf_bd",
+      "target": "puf_schematic_proc_sys_reset"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_puf_bd",
+      "target": "puf_schematic_puf_top_ip"
+    },
+    {
+      "relation": "references",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "puf schematic.pdf",
+      "source_location": "puf schematic.pdf:1",
+      "weight": 1.0,
+      "source": "puf_schematic_puf_bd",
+      "target": "puf_schematic_zynq_ps"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "crp_collection_data_path",
+      "label": "CRP Collection Data Path (host to PUF array)",
+      "nodes": [
+        "python_01_collect_crps_query_puf",
+        "puf_schematic_zynq_ps",
+        "puf_schematic_axi_gpio",
+        "puf_schematic_puf_top_ip",
+        "verilog_puf_driver_puf_driver"
+      ],
+      "relation": "participate_in",
+      "confidence": "INFERRED",
+      "confidence_score": 0.75,
+      "source_file": "puf schematic.pdf"
+    }
+  ],
+  "built_at_commit": "661efa60ce7c9186803716af46878eaf650d8f76"
+}

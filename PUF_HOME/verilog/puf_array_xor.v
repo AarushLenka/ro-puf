@@ -16,7 +16,7 @@ module puf_array_xor (
     genvar i;
     generate
         for (i = 0; i < 8; i = i + 1) begin : cells
-            puf_cell #(.CELL_ID(i)) cell_inst (
+            puf_cell #(.CELL_ID(i)) cell (
                 .clk(clk), .rstc(rstc), .rst_dff(rst_dff),
                 .sel0(sel0), .sel1(sel1),
                 .out_trig(out_trig), .R(raw_R[i])

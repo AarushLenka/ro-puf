@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 
 module puf_cell #(
-    parameter CELL_ID = 0   // 0–7, gives every oscillator across all cells a unique ID
+    parameter CELL_ID = 0   // 0-7, gives every oscillator across all cells a unique ID
 )(
     input        clk,
     input        rstc,       // resets the counters
@@ -33,27 +33,47 @@ module puf_cell #(
         end
     endgenerate
 
-    // OR-reduce: since only one oscillator per group is enabled at a time,
-    // this passes through exactly that oscillator's output.
-    wire clk0 = |osc0_out;
-    wire clk1 = |osc1_out;
+    // Select the enabled oscillator's output. An OR-reduce of all 16 would also
+    // pick up the *disabled* oscillators' divider outputs: clock_div_2.q holds
+    // its last value when its clock stops, so a disabled channel can sit at 1
+    // and jam the OR permanently high. Masking by the select makes only the
+    // chosen channel observable.
+    wire [15:0] osc0_masked = osc0_out & (16'b1 << sel0);
+    wire [15:0] osc1_masked = osc1_out & (16'b1 << sel1);
+    wire clk0 = |osc0_masked;
+    wire clk1 = |osc1_masked;
 
-    reg [7:0] cnt0, cnt1;
+    // 16-bit so the count cannot saturate within the measurement window.
+    // At 8-bit the counters cap at 255 and `cnt0 > cnt1` degenerates to 0
+    // whenever both saturate.
+    reg [15:0] cnt0, cnt1;
 
     always @(posedge clk0 or posedge rstc)
-        if (rstc) cnt0 <= 8'd0;
-        else if (cnt0 < 8'd255) cnt0 <= cnt0 + 8'd1;
+        if (rstc) cnt0 <= 16'd0;
+        else      cnt0 <= cnt0 + 16'd1;
 
     always @(posedge clk1 or posedge rstc)
-        if (rstc) cnt1 <= 8'd0;
-        else if (cnt1 < 8'd255) cnt1 <= cnt1 + 8'd1;
+        if (rstc) cnt1 <= 16'd0;
+        else      cnt1 <= cnt1 + 16'd1;
+
+    // cnt0/cnt1 are clocked by the asynchronous oscillators, so they must be
+    // brought into the `clk` domain before being compared -- sampling them
+    // directly in the comparison below is a CDC violation and can latch a
+    // metastable value. Two flop stages per counter.
+    reg [15:0] cnt0_meta, cnt1_meta, cnt0_sys, cnt1_sys;
+    always @(posedge clk) begin
+        cnt0_meta <= cnt0;
+        cnt1_meta <= cnt1;
+        cnt0_sys  <= cnt0_meta;
+        cnt1_sys  <= cnt1_meta;
+    end
 
     // Latch the comparison result when the driver pulses out_trig.
     always @(posedge clk or posedge rst_dff) begin
         if (rst_dff)
             R <= 1'b0;
         else if (out_trig)
-            R <= (cnt0 > cnt1) ? 1'b1 : 1'b0;
+            R <= (cnt0_sys > cnt1_sys) ? 1'b1 : 1'b0;
     end
 
 endmodule

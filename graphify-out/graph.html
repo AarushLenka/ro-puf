@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>graphify - graphify-out/graph.html</title>
+<script src="https://unpkg.com/vis-network@9.1.6/standalone/umd/vis-network.min.js"
+        integrity="sha384-Ux6phic9PEHJ38YtrijhkzyJ8yQlH8i/+buBR8s3mAZOJrP1gwyvAcIYl3GWtpX1"
+        crossorigin="anonymous"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0f0f1a; color: #e0e0e0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; display: flex; height: 100vh; overflow: hidden; }
+  #graph { flex: 1; }
+  #sidebar { width: 280px; background: #1a1a2e; border-left: 1px solid #2a2a4e; display: flex; flex-direction: column; overflow: hidden; }
+  #search-wrap { padding: 12px; border-bottom: 1px solid #2a2a4e; }
+  #search { width: 100%; background: #0f0f1a; border: 1px solid #3a3a5e; color: #e0e0e0; padding: 7px 10px; border-radius: 6px; font-size: 13px; outline: none; }
+  #search:focus { border-color: #4E79A7; }
+  #search-results { max-height: 140px; overflow-y: auto; padding: 4px 12px; border-bottom: 1px solid #2a2a4e; display: none; }
+  .search-item { padding: 4px 6px; cursor: pointer; border-radius: 4px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .search-item:hover { background: #2a2a4e; }
+  #info-panel { padding: 14px; border-bottom: 1px solid #2a2a4e; min-height: 140px; }
+  #info-panel h3 { font-size: 13px; color: #aaa; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.05em; }
+  #info-content { font-size: 13px; color: #ccc; line-height: 1.6; }
+  #info-content .field { margin-bottom: 5px; }
+  #info-content .field b { color: #e0e0e0; }
+  #info-content .empty { color: #555; font-style: italic; }
+  .neighbor-link { display: block; padding: 2px 6px; margin: 2px 0; border-radius: 3px; cursor: pointer; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-left: 3px solid #333; }
+  .neighbor-link:hover { background: #2a2a4e; }
+  #neighbors-list { max-height: 160px; overflow-y: auto; margin-top: 4px; }
+  #legend-wrap { flex: 1; overflow-y: auto; padding: 12px; }
+  #legend-wrap h3 { font-size: 13px; color: #aaa; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .legend-item { display: flex; align-items: center; gap: 8px; padding: 4px 0; cursor: pointer; border-radius: 4px; font-size: 12px; }
+  .legend-item:hover { background: #2a2a4e; padding-left: 4px; }
+  .legend-item.dimmed { opacity: 0.35; }
+  .legend-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+  .legend-label { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { color: #666; font-size: 11px; }
+  #stats { padding: 10px 14px; border-top: 1px solid #2a2a4e; font-size: 11px; color: #555; }
+  #legend-controls { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; padding: 4px 0; }
+  #legend-controls label { display: flex; align-items: center; gap: 6px; cursor: pointer; font-size: 12px; color: #aaa; user-select: none; }
+  #legend-controls label:hover { color: #e0e0e0; }
+  .legend-cb, #select-all-cb { appearance: none; -webkit-appearance: none; width: 14px; height: 14px; border: 1.5px solid #3a3a5e; border-radius: 3px; background: #0f0f1a; cursor: pointer; position: relative; flex-shrink: 0; }
+  .legend-cb:checked, #select-all-cb:checked { background: #4E79A7; border-color: #4E79A7; }
+  .legend-cb:checked::after, #select-all-cb:checked::after { content: ''; position: absolute; left: 3.5px; top: 1px; width: 4px; height: 7px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  #select-all-cb:indeterminate { background: #4E79A7; border-color: #4E79A7; }
+  #select-all-cb:indeterminate::after { content: ''; position: absolute; left: 2px; top: 5px; width: 8px; height: 2px; background: #fff; border: none; transform: none; }
+</style>
+</head>
+<body>
+<div id="graph"></div>
+<div id="sidebar">
+  <div id="search-wrap">
+    <input id="search" type="text" placeholder="Search nodes..." autocomplete="off">
+    <div id="search-results"></div>
+  </div>
+  <div id="info-panel">
+    <h3>Node Info</h3>
+    <div id="info-content"><span class="empty">Click a node to inspect it</span></div>
+  </div>
+  <div id="legend-wrap">
+    <h3>Communities</h3>
+    <div id="legend-controls">
+      <label><input type="checkbox" id="select-all-cb" checked onchange="toggleAllCommunities(!this.checked)">Select All</label>
+    </div>
+    <div id="legend"></div>
+  </div>
+  <div id="stats">75 nodes &middot; 66 edges &middot; 18 communities</div>
+</div>
+<script>
+const RAW_NODES = [{"id": "puf_home_verilog_clock_div_2", "label": "clock_div_2.v", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "clock_div_2.v", "community": 9, "community_name": "Clock Divider (PUF_HOME)", "source_file": "PUF_HOME/verilog/clock_div_2.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_clock_div_2_clock_div_2", "label": "clock_div_2", "color": {"background": "#BAB0AC", "border": "#BAB0AC", "highlight": {"background": "#ffffff", "border": "#BAB0AC"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "clock_div_2", "community": 9, "community_name": "Clock Divider (PUF_HOME)", "source_file": "PUF_HOME/verilog/clock_div_2.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_array", "label": "puf_array.v", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array.v", "community": 10, "community_name": "PUF Array (PUF_HOME)", "source_file": "PUF_HOME/verilog/puf_array.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_array_puf_array", "label": "puf_array", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array", "community": 10, "community_name": "PUF Array (PUF_HOME)", "source_file": "PUF_HOME/verilog/puf_array.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_array_xor", "label": "puf_array_xor.v", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array_xor.v", "community": 11, "community_name": "XOR-Hardened Array (PUF_HOME)", "source_file": "PUF_HOME/verilog/puf_array_xor.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_array_xor_puf_array_xor", "label": "puf_array_xor", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array_xor", "community": 11, "community_name": "XOR-Hardened Array (PUF_HOME)", "source_file": "PUF_HOME/verilog/puf_array_xor.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_cell", "label": "puf_cell.v", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_cell.v", "community": 12, "community_name": "PUF Cell (PUF_HOME)", "source_file": "PUF_HOME/verilog/puf_cell.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_cell_puf_cell", "label": "puf_cell", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_cell", "community": 12, "community_name": "PUF Cell (PUF_HOME)", "source_file": "PUF_HOME/verilog/puf_cell.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_driver", "label": "puf_driver.v", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_driver.v", "community": 13, "community_name": "PUF Driver FSM (PUF_HOME)", "source_file": "PUF_HOME/verilog/puf_driver.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_driver_puf_driver", "label": "puf_driver", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_driver", "community": 13, "community_name": "PUF Driver FSM (PUF_HOME)", "source_file": "PUF_HOME/verilog/puf_driver.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_top", "label": "puf_top.v", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_top.v", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "PUF_HOME/verilog/puf_top.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_top_puf_top", "label": "puf_top", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 27.1, "font": {"size": 12, "color": "#ffffff"}, "title": "puf_top", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "PUF_HOME/verilog/puf_top.v", "file_type": "code", "degree": 4}, {"id": "puf_home_verilog_puf_top_v_puf_driver", "label": "puf_driver", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_driver", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "PUF_HOME/verilog/puf_top.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_puf_top_v_puf_array", "label": "puf_array", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "PUF_HOME/verilog/puf_top.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_ring_osc", "label": "ring_osc.v", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "ring_osc.v", "community": 5, "community_name": "Ring Oscillator (PUF_HOME)", "source_file": "PUF_HOME/verilog/ring_osc.v", "file_type": "code", "degree": 1}, {"id": "puf_home_verilog_ring_osc_ring_osc", "label": "ring_osc", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "ring_osc", "community": 5, "community_name": "Ring Oscillator (PUF_HOME)", "source_file": "PUF_HOME/verilog/ring_osc.v", "file_type": "code", "degree": 2}, {"id": "puf_home_verilog_ring_osc_v_clock_div_2", "label": "clock_div_2", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "clock_div_2", "community": 5, "community_name": "Ring Oscillator (PUF_HOME)", "source_file": "PUF_HOME/verilog/ring_osc.v", "file_type": "code", "degree": 1}, {"id": "python_01_collect_crps", "label": "01_collect_crps.py", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "01_collect_crps.py", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "python/01_collect_crps.py", "file_type": "code", "degree": 2}, {"id": "python_01_collect_crps_query_puf", "label": "query_puf()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 27.1, "font": {"size": 12, "color": "#ffffff"}, "title": "query_puf()", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "python/01_collect_crps.py", "file_type": "code", "degree": 4}, {"id": "python_01_collect_crps_majority_vote", "label": "majority_vote()", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "majority_vote()", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "python/01_collect_crps.py", "file_type": "code", "degree": 2}, {"id": "python_01_collect_crps_rationale_19", "label": "Send one challenge, wait for the done flag, return the 8-bit response.", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Send one challenge, wait for the done flag, return the 8-bit response.", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "python/01_collect_crps.py", "file_type": "rationale", "degree": 1}, {"id": "python_01_collect_crps_rationale_32", "label": "For each of the 8 bit positions, take whichever value (0 or 1) appeared     in m", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "For each of the 8 bit positions, take whichever value (0 or 1) appeared     in m", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "python/01_collect_crps.py", "file_type": "rationale", "degree": 1}, {"id": "python_02_ml_attack", "label": "02_ml_attack.py", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "02_ml_attack.py", "community": 6, "community_name": "ML Modeling Attack", "source_file": "python/02_ml_attack.py", "file_type": "code", "degree": 1}, {"id": "python_02_ml_attack_int_to_bits", "label": "int_to_bits()", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "int_to_bits()", "community": 6, "community_name": "ML Modeling Attack", "source_file": "python/02_ml_attack.py", "file_type": "code", "degree": 2}, {"id": "python_02_ml_attack_rationale_20", "label": "8-bit integer -> list of 8 individual bits (MSB first).", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "8-bit integer -&gt; list of 8 individual bits (MSB first).", "community": 6, "community_name": "ML Modeling Attack", "source_file": "python/02_ml_attack.py", "file_type": "rationale", "degree": 1}, {"id": "python_03_defense_verification", "label": "03_defense_verification.py", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "03_defense_verification.py", "community": 7, "community_name": "XOR Defense Verification", "source_file": "python/03_defense_verification.py", "file_type": "code", "degree": 2}, {"id": "python_03_defense_verification_load_and_prepare", "label": "load_and_prepare()", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "load_and_prepare()", "community": 7, "community_name": "XOR Defense Verification", "source_file": "python/03_defense_verification.py", "file_type": "code", "degree": 1}, {"id": "python_03_defense_verification_run_attack", "label": "run_attack()", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "run_attack()", "community": 7, "community_name": "XOR Defense Verification", "source_file": "python/03_defense_verification.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection", "label": "04_rl_challenge_selection.py", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 40.0, "font": {"size": 12, "color": "#ffffff"}, "title": "04_rl_challenge_selection.py", "community": 3, "community_name": "RL Challenge Environment", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 7}, {"id": "python_04_rl_challenge_selection_query_puf_simulated", "label": "query_puf_simulated()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 22.9, "font": {"size": 12, "color": "#ffffff"}, "title": "query_puf_simulated()", "community": 3, "community_name": "RL Challenge Environment", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 3}, {"id": "python_04_rl_challenge_selection_entropy_score", "label": "entropy_score()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 22.9, "font": {"size": 12, "color": "#ffffff"}, "title": "entropy_score()", "community": 3, "community_name": "RL Challenge Environment", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 3}, {"id": "python_04_rl_challenge_selection_get_reward", "label": "get_reward()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 31.4, "font": {"size": 12, "color": "#ffffff"}, "title": "get_reward()", "community": 3, "community_name": "RL Challenge Environment", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 5}, {"id": "python_04_rl_challenge_selection_qlearningchallengeselector", "label": "QLearningChallengeSelector", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 31.4, "font": {"size": 12, "color": "#ffffff"}, "title": "QLearningChallengeSelector", "community": 4, "community_name": "Tabular Q-Learning Selector", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 5}, {"id": "python_04_rl_challenge_selection_qlearningchallengeselector_init", "label": ".__init__()", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".__init__()", "community": 4, "community_name": "Tabular Q-Learning Selector", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_qlearningchallengeselector_select_action", "label": ".select_action()", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".select_action()", "community": 4, "community_name": "Tabular Q-Learning Selector", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_qlearningchallengeselector_update", "label": ".update()", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".update()", "community": 4, "community_name": "Tabular Q-Learning Selector", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_qlearningchallengeselector_get_top_k", "label": ".get_top_k()", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".get_top_k()", "community": 4, "community_name": "Tabular Q-Learning Selector", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_evaluate_set", "label": "evaluate_set()", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "evaluate_set()", "community": 3, "community_name": "RL Challenge Environment", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 2}, {"id": "python_04_rl_challenge_selection_qnetwork", "label": "QNetwork", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 31.4, "font": {"size": 12, "color": "#ffffff"}, "title": "QNetwork", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 5}, {"id": "python_04_rl_challenge_selection_qnetwork_init", "label": ".__init__()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": ".__init__()", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 2}, {"id": "python_04_rl_challenge_selection_qnetwork_forward", "label": ".forward()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".forward()", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_dqnagent", "label": "DQNAgent", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 35.7, "font": {"size": 12, "color": "#ffffff"}, "title": "DQNAgent", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 6}, {"id": "python_04_rl_challenge_selection_dqnagent_init", "label": ".__init__()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 22.9, "font": {"size": 12, "color": "#ffffff"}, "title": ".__init__()", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 3}, {"id": "python_04_rl_challenge_selection_dqnagent_select_action", "label": ".select_action()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".select_action()", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_dqnagent_remember", "label": ".remember()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".remember()", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_dqnagent_train_step", "label": ".train_step()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".train_step()", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_dqnagent_get_top_k", "label": ".get_top_k()", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": ".get_top_k()", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "code", "degree": 1}, {"id": "python_04_rl_challenge_selection_rationale_22", "label": "One simulated noisy query. Uses the real per-challenge stability score     from", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "One simulated noisy query. Uses the real per-challenge stability score     from", "community": 3, "community_name": "RL Challenge Environment", "source_file": "python/04_rl_challenge_selection.py", "file_type": "rationale", "degree": 1}, {"id": "python_04_rl_challenge_selection_rationale_38", "label": "1.0 if exactly 4 of 8 bits are 1 (perfectly balanced), 0.0 if all-0 or all-1.", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "1.0 if exactly 4 of 8 bits are 1 (perfectly balanced), 0.0 if all-0 or all-1.", "community": 3, "community_name": "RL Challenge Environment", "source_file": "python/04_rl_challenge_selection.py", "file_type": "rationale", "degree": 1}, {"id": "python_04_rl_challenge_selection_rationale_43", "label": "Query the challenge n_samples times, majority-vote to find the stable     respon", "color": {"background": "#76B7B2", "border": "#76B7B2", "highlight": {"background": "#ffffff", "border": "#76B7B2"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Query the challenge n_samples times, majority-vote to find the stable     respon", "community": 3, "community_name": "RL Challenge Environment", "source_file": "python/04_rl_challenge_selection.py", "file_type": "rationale", "degree": 1}, {"id": "python_04_rl_challenge_selection_rationale_168", "label": "Maps a one-hot challenge encoding to an estimated Q-value per challenge.", "color": {"background": "#E15759", "border": "#E15759", "highlight": {"background": "#ffffff", "border": "#E15759"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Maps a one-hot challenge encoding to an estimated Q-value per challenge.", "community": 2, "community_name": "Deep Q-Network Agent", "source_file": "python/04_rl_challenge_selection.py", "file_type": "rationale", "degree": 1}, {"id": "verilog_clock_div_2", "label": "clock_div_2.v", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "clock_div_2.v", "community": 14, "community_name": "Clock Divider (verilog)", "source_file": "verilog/clock_div_2.v", "file_type": "code", "degree": 1}, {"id": "verilog_clock_div_2_clock_div_2", "label": "clock_div_2", "color": {"background": "#59A14F", "border": "#59A14F", "highlight": {"background": "#ffffff", "border": "#59A14F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "clock_div_2", "community": 14, "community_name": "Clock Divider (verilog)", "source_file": "verilog/clock_div_2.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_array", "label": "puf_array.v", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array.v", "community": 15, "community_name": "PUF Array (verilog)", "source_file": "verilog/puf_array.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_array_puf_array", "label": "puf_array", "color": {"background": "#EDC948", "border": "#EDC948", "highlight": {"background": "#ffffff", "border": "#EDC948"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array", "community": 15, "community_name": "PUF Array (verilog)", "source_file": "verilog/puf_array.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_array_xor", "label": "puf_array_xor.v", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array_xor.v", "community": 16, "community_name": "XOR-Hardened Array (verilog)", "source_file": "verilog/puf_array_xor.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_array_xor_puf_array_xor", "label": "puf_array_xor", "color": {"background": "#B07AA1", "border": "#B07AA1", "highlight": {"background": "#ffffff", "border": "#B07AA1"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array_xor", "community": 16, "community_name": "XOR-Hardened Array (verilog)", "source_file": "verilog/puf_array_xor.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_cell", "label": "puf_cell.v", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_cell.v", "community": 17, "community_name": "PUF Cell (verilog)", "source_file": "verilog/puf_cell.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_cell_puf_cell", "label": "puf_cell", "color": {"background": "#FF9DA7", "border": "#FF9DA7", "highlight": {"background": "#ffffff", "border": "#FF9DA7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_cell", "community": 17, "community_name": "PUF Cell (verilog)", "source_file": "verilog/puf_cell.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_driver", "label": "puf_driver.v", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_driver.v", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "verilog/puf_driver.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_driver_puf_driver", "label": "puf_driver", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "puf_driver", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "verilog/puf_driver.v", "file_type": "code", "degree": 2}, {"id": "verilog_puf_top", "label": "puf_top.v", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_top.v", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "verilog/puf_top.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_top_puf_top", "label": "puf_top", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 31.4, "font": {"size": 12, "color": "#ffffff"}, "title": "puf_top", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "verilog/puf_top.v", "file_type": "code", "degree": 5}, {"id": "verilog_puf_top_v_puf_driver", "label": "puf_driver", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_driver", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "verilog/puf_top.v", "file_type": "code", "degree": 1}, {"id": "verilog_puf_top_v_puf_array", "label": "puf_array", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "puf_array", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "verilog/puf_top.v", "file_type": "code", "degree": 1}, {"id": "verilog_ring_osc", "label": "ring_osc.v", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "ring_osc.v", "community": 8, "community_name": "Ring Oscillator (verilog)", "source_file": "verilog/ring_osc.v", "file_type": "code", "degree": 1}, {"id": "verilog_ring_osc_ring_osc", "label": "ring_osc", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "ring_osc", "community": 8, "community_name": "Ring Oscillator (verilog)", "source_file": "verilog/ring_osc.v", "file_type": "code", "degree": 2}, {"id": "verilog_ring_osc_v_clock_div_2", "label": "clock_div_2", "color": {"background": "#9C755F", "border": "#9C755F", "highlight": {"background": "#ffffff", "border": "#9C755F"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "clock_div_2", "community": 8, "community_name": "Ring Oscillator (verilog)", "source_file": "verilog/ring_osc.v", "file_type": "code", "degree": 1}, {"id": "readme_ro_puf", "label": "ro-puf (Ring Oscillator PUF Project)", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "ro-puf (Ring Oscillator PUF Project)", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "README.md", "file_type": "concept", "degree": 1}, {"id": "puf_schematic_puf_bd", "label": "puf_bd Vivado Block Design", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 31.4, "font": {"size": 12, "color": "#ffffff"}, "title": "puf_bd Vivado Block Design", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "puf schematic.pdf", "file_type": "concept", "degree": 5}, {"id": "puf_schematic_zynq_ps", "label": "Zynq7 Processing System", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 18.6, "font": {"size": 12, "color": "#ffffff"}, "title": "Zynq7 Processing System", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "puf schematic.pdf", "file_type": "concept", "degree": 2}, {"id": "puf_schematic_axi_gpio", "label": "AXI GPIO Challenge/Response Interface", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 22.9, "font": {"size": 12, "color": "#ffffff"}, "title": "AXI GPIO Challenge/Response Interface", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "puf schematic.pdf", "file_type": "concept", "degree": 3}, {"id": "puf_schematic_puf_top_ip", "label": "PUF Top IP Instance", "color": {"background": "#F28E2B", "border": "#F28E2B", "highlight": {"background": "#ffffff", "border": "#F28E2B"}}, "size": 22.9, "font": {"size": 12, "color": "#ffffff"}, "title": "PUF Top IP Instance", "community": 1, "community_name": "PUF Top-Level Integration", "source_file": "puf schematic.pdf", "file_type": "concept", "degree": 3}, {"id": "puf_schematic_axi_interconnect", "label": "AXI Interconnect", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "AXI Interconnect", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "puf schematic.pdf", "file_type": "concept", "degree": 1}, {"id": "puf_schematic_proc_sys_reset", "label": "Processor System Reset", "color": {"background": "#4E79A7", "border": "#4E79A7", "highlight": {"background": "#ffffff", "border": "#4E79A7"}}, "size": 14.3, "font": {"size": 0, "color": "#ffffff"}, "title": "Processor System Reset", "community": 0, "community_name": "Host-Hardware CRP Bridge", "source_file": "puf schematic.pdf", "file_type": "concept", "degree": 1}];
+const RAW_EDGES = [{"from": "puf_home_verilog_clock_div_2", "to": "puf_home_verilog_clock_div_2_clock_div_2", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_puf_array", "to": "puf_home_verilog_puf_array_puf_array", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_puf_array_xor", "to": "puf_home_verilog_puf_array_xor_puf_array_xor", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_puf_cell", "to": "puf_home_verilog_puf_cell_puf_cell", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_puf_driver", "to": "puf_home_verilog_puf_driver_puf_driver", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_puf_top", "to": "puf_home_verilog_puf_top_puf_top", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_puf_top_puf_top", "to": "puf_home_verilog_puf_top_v_puf_array", "label": "instantiates", "title": "instantiates [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_puf_top_puf_top", "to": "puf_home_verilog_puf_top_v_puf_driver", "label": "instantiates", "title": "instantiates [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_puf_top_puf_top", "to": "puf_schematic_puf_top_ip", "label": "implements", "title": "implements [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "puf_home_verilog_ring_osc", "to": "puf_home_verilog_ring_osc_ring_osc", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_home_verilog_ring_osc_ring_osc", "to": "puf_home_verilog_ring_osc_v_clock_div_2", "label": "instantiates", "title": "instantiates [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_01_collect_crps", "to": "python_01_collect_crps_majority_vote", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_01_collect_crps", "to": "python_01_collect_crps_query_puf", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_01_collect_crps_query_puf", "to": "puf_schematic_axi_gpio", "label": "shares_data_with", "title": "shares_data_with [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "python_01_collect_crps_query_puf", "to": "puf_schematic_zynq_ps", "label": "shares_data_with", "title": "shares_data_with [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "python_01_collect_crps_query_puf", "to": "python_01_collect_crps_rationale_19", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_01_collect_crps_majority_vote", "to": "python_01_collect_crps_rationale_32", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_02_ml_attack", "to": "python_02_ml_attack_int_to_bits", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_02_ml_attack_int_to_bits", "to": "python_02_ml_attack_rationale_20", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_03_defense_verification", "to": "python_03_defense_verification_load_and_prepare", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_03_defense_verification", "to": "python_03_defense_verification_run_attack", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection", "to": "python_04_rl_challenge_selection_dqnagent", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection", "to": "python_04_rl_challenge_selection_entropy_score", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection", "to": "python_04_rl_challenge_selection_evaluate_set", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection", "to": "python_04_rl_challenge_selection_get_reward", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection", "to": "python_04_rl_challenge_selection_qlearningchallengeselector", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection", "to": "python_04_rl_challenge_selection_qnetwork", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection", "to": "python_04_rl_challenge_selection_query_puf_simulated", "label": "contains", "title": "contains [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_query_puf_simulated", "to": "python_04_rl_challenge_selection_get_reward", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_query_puf_simulated", "to": "python_04_rl_challenge_selection_rationale_22", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_entropy_score", "to": "python_04_rl_challenge_selection_get_reward", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_entropy_score", "to": "python_04_rl_challenge_selection_rationale_38", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_get_reward", "to": "python_04_rl_challenge_selection_evaluate_set", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_get_reward", "to": "python_04_rl_challenge_selection_rationale_43", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qlearningchallengeselector", "to": "python_04_rl_challenge_selection_qlearningchallengeselector_get_top_k", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qlearningchallengeselector", "to": "python_04_rl_challenge_selection_qlearningchallengeselector_init", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qlearningchallengeselector", "to": "python_04_rl_challenge_selection_qlearningchallengeselector_select_action", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qlearningchallengeselector", "to": "python_04_rl_challenge_selection_qlearningchallengeselector_update", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qnetwork", "to": "python_04_rl_challenge_selection_dqnagent_init", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qnetwork", "to": "python_04_rl_challenge_selection_qnetwork_forward", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qnetwork", "to": "python_04_rl_challenge_selection_qnetwork_init", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qnetwork", "to": "python_04_rl_challenge_selection_rationale_168", "label": "rationale_for", "title": "rationale_for [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_qnetwork_init", "to": "python_04_rl_challenge_selection_dqnagent_init", "label": "calls", "title": "calls [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_dqnagent", "to": "python_04_rl_challenge_selection_dqnagent_get_top_k", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_dqnagent", "to": "python_04_rl_challenge_selection_dqnagent_init", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_dqnagent", "to": "python_04_rl_challenge_selection_dqnagent_remember", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_dqnagent", "to": "python_04_rl_challenge_selection_dqnagent_select_action", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "python_04_rl_challenge_selection_dqnagent", "to": "python_04_rl_challenge_selection_dqnagent_train_step", "label": "method", "title": "method [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_clock_div_2", "to": "verilog_clock_div_2_clock_div_2", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_puf_array", "to": "verilog_puf_array_puf_array", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_puf_array_xor", "to": "verilog_puf_array_xor_puf_array_xor", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_puf_cell", "to": "verilog_puf_cell_puf_cell", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_puf_driver", "to": "verilog_puf_driver_puf_driver", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_puf_driver_puf_driver", "to": "puf_schematic_axi_gpio", "label": "shares_data_with", "title": "shares_data_with [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "verilog_puf_top", "to": "verilog_puf_top_puf_top", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_puf_top_puf_top", "to": "puf_schematic_puf_top_ip", "label": "implements", "title": "implements [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "verilog_puf_top_puf_top", "to": "readme_ro_puf", "label": "conceptually_related_to", "title": "conceptually_related_to [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "verilog_puf_top_puf_top", "to": "verilog_puf_top_v_puf_array", "label": "instantiates", "title": "instantiates [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_puf_top_puf_top", "to": "verilog_puf_top_v_puf_driver", "label": "instantiates", "title": "instantiates [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_ring_osc", "to": "verilog_ring_osc_ring_osc", "label": "defines", "title": "defines [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "verilog_ring_osc_ring_osc", "to": "verilog_ring_osc_v_clock_div_2", "label": "instantiates", "title": "instantiates [EXTRACTED]", "dashes": false, "width": 2, "color": {"opacity": 0.7}, "confidence": "EXTRACTED"}, {"from": "puf_schematic_puf_bd", "to": "puf_schematic_axi_gpio", "label": "references", "title": "references [AMBIGUOUS]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "AMBIGUOUS"}, {"from": "puf_schematic_puf_bd", "to": "puf_schematic_axi_interconnect", "label": "references", "title": "references [AMBIGUOUS]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "AMBIGUOUS"}, {"from": "puf_schematic_puf_bd", "to": "puf_schematic_proc_sys_reset", "label": "references", "title": "references [AMBIGUOUS]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "AMBIGUOUS"}, {"from": "puf_schematic_puf_bd", "to": "puf_schematic_puf_top_ip", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}, {"from": "puf_schematic_puf_bd", "to": "puf_schematic_zynq_ps", "label": "references", "title": "references [INFERRED]", "dashes": true, "width": 1, "color": {"opacity": 0.35}, "confidence": "INFERRED"}];
+const LEGEND = [{"cid": 0, "color": "#4E79A7", "label": "Host-Hardware CRP Bridge", "count": 12}, {"cid": 1, "color": "#F28E2B", "label": "PUF Top-Level Integration", "count": 10}, {"cid": 2, "color": "#E15759", "label": "Deep Q-Network Agent", "count": 10}, {"cid": 3, "color": "#76B7B2", "label": "RL Challenge Environment", "count": 8}, {"cid": 4, "color": "#59A14F", "label": "Tabular Q-Learning Selector", "count": 5}, {"cid": 5, "color": "#EDC948", "label": "Ring Oscillator (PUF_HOME)", "count": 3}, {"cid": 6, "color": "#B07AA1", "label": "ML Modeling Attack", "count": 3}, {"cid": 7, "color": "#FF9DA7", "label": "XOR Defense Verification", "count": 3}, {"cid": 8, "color": "#9C755F", "label": "Ring Oscillator (verilog)", "count": 3}, {"cid": 9, "color": "#BAB0AC", "label": "Clock Divider (PUF_HOME)", "count": 2}, {"cid": 10, "color": "#4E79A7", "label": "PUF Array (PUF_HOME)", "count": 2}, {"cid": 11, "color": "#F28E2B", "label": "XOR-Hardened Array (PUF_HOME)", "count": 2}, {"cid": 12, "color": "#E15759", "label": "PUF Cell (PUF_HOME)", "count": 2}, {"cid": 13, "color": "#76B7B2", "label": "PUF Driver FSM (PUF_HOME)", "count": 2}, {"cid": 14, "color": "#59A14F", "label": "Clock Divider (verilog)", "count": 2}, {"cid": 15, "color": "#EDC948", "label": "PUF Array (verilog)", "count": 2}, {"cid": 16, "color": "#B07AA1", "label": "XOR-Hardened Array (verilog)", "count": 2}, {"cid": 17, "color": "#FF9DA7", "label": "PUF Cell (verilog)", "count": 2}];
+
+// HTML-escape helper — prevents XSS when injecting graph data into innerHTML
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+// Build vis datasets
+const nodesDS = new vis.DataSet(RAW_NODES.map(n => ({
+  id: n.id, label: n.label, color: n.color, size: n.size,
+  font: n.font, title: n.title,
+  _community: n.community, _community_name: n.community_name,
+  _source_file: n.source_file, _file_type: n.file_type, _degree: n.degree,
+})));
+
+const edgesDS = new vis.DataSet(RAW_EDGES.map((e, i) => ({
+  id: i, from: e.from, to: e.to,
+  label: '',
+  title: e.title,
+  dashes: e.dashes,
+  width: e.width,
+  color: e.color,
+  arrows: { to: { enabled: true, scaleFactor: 0.5 } },
+})));
+
+const container = document.getElementById('graph');
+const network = new vis.Network(container, { nodes: nodesDS, edges: edgesDS }, {
+  physics: {
+    enabled: true,
+    solver: 'forceAtlas2Based',
+    forceAtlas2Based: {
+      gravitationalConstant: -60,
+      centralGravity: 0.005,
+      springLength: 120,
+      springConstant: 0.08,
+      damping: 0.4,
+      avoidOverlap: 0.8,
+    },
+    stabilization: { iterations: 200, fit: true },
+  },
+  interaction: {
+    hover: true,
+    tooltipDelay: 100,
+    hideEdgesOnDrag: true,
+    navigationButtons: false,
+    keyboard: false,
+  },
+  nodes: { shape: 'dot', borderWidth: 1.5 },
+  edges: { smooth: { type: 'continuous', roundness: 0.2 }, selectionWidth: 3 },
+});
+
+network.once('stabilizationIterationsDone', () => {
+  network.setOptions({ physics: { enabled: false } });
+});
+
+function showInfo(nodeId) {
+  const n = nodesDS.get(nodeId);
+  if (!n) return;
+  const neighborIds = network.getConnectedNodes(nodeId);
+  const neighborItems = neighborIds.map(nid => {
+    const nb = nodesDS.get(nid);
+    const color = nb ? nb.color.background : '#555';
+    return `<span class="neighbor-link" style="border-left-color:${esc(color)}" data-nid="${esc(nid)}">${esc(nb ? nb.label : nid)}</span>`;
+  }).join('');
+  document.getElementById('info-content').innerHTML = `
+    <div class="field"><b>${esc(n.label)}</b></div>
+    <div class="field">Type: ${esc(n._file_type || 'unknown')}</div>
+    <div class="field">Community: ${esc(n._community_name)}</div>
+    <div class="field">Source: ${esc(n._source_file || '-')}</div>
+    <div class="field">Degree: ${n._degree}</div>
+    ${neighborIds.length ? `<div class="field" style="margin-top:8px;color:#aaa;font-size:11px">Neighbors (${neighborIds.length})</div><div id="neighbors-list">${neighborItems}</div>` : ''}
+  `;
+}
+
+function focusNode(nodeId) {
+  network.focus(nodeId, { scale: 1.4, animation: true });
+  network.selectNodes([nodeId]);
+  showInfo(nodeId);
+}
+
+// Neighbor links use a data attribute + one delegated listener rather than an
+// inline onclick. A node id/label sourced from a document or a scraped URL
+// (graphify add) can contain a double-quote; dropping the stringified id
+// unescaped into a quoted onclick both broke every link and allowed a hostile
+// source to inject an event handler into the local report (stored XSS, #1838).
+// esc() on data-nid keeps the value inside the attribute; the listener reads it
+// back verbatim. Bound to document so it survives the innerHTML rebuild that
+// recreates #neighbors-list on each showInfo().
+document.addEventListener('click', e => {
+  const el = e.target.closest('.neighbor-link');
+  if (el && el.dataset.nid !== undefined) focusNode(el.dataset.nid);
+});
+
+// Track hovered node — hover detection is more reliable than click params
+let hoveredNodeId = null;
+network.on('hoverNode', params => {
+  hoveredNodeId = params.node;
+  container.style.cursor = 'pointer';
+});
+network.on('blurNode', () => {
+  hoveredNodeId = null;
+  container.style.cursor = 'default';
+});
+container.addEventListener('click', () => {
+  if (hoveredNodeId !== null) {
+    showInfo(hoveredNodeId);
+    network.selectNodes([hoveredNodeId]);
+  }
+});
+network.on('click', params => {
+  if (params.nodes.length > 0) {
+    showInfo(params.nodes[0]);
+  } else if (hoveredNodeId === null) {
+    document.getElementById('info-content').innerHTML = '<span class="empty">Click a node to inspect it</span>';
+  }
+});
+
+const searchInput = document.getElementById('search');
+const searchResults = document.getElementById('search-results');
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.toLowerCase().trim();
+  searchResults.innerHTML = '';
+  if (!q) { searchResults.style.display = 'none'; return; }
+  const matches = RAW_NODES.filter(n => n.label.toLowerCase().includes(q)).slice(0, 20);
+  if (!matches.length) { searchResults.style.display = 'none'; return; }
+  searchResults.style.display = 'block';
+  matches.forEach(n => {
+    const el = document.createElement('div');
+    el.className = 'search-item';
+    el.textContent = n.label;
+    el.style.borderLeft = `3px solid ${n.color.background}`;
+    el.style.paddingLeft = '8px';
+    el.onclick = () => {
+      network.focus(n.id, { scale: 1.5, animation: true });
+      network.selectNodes([n.id]);
+      showInfo(n.id);
+      searchResults.style.display = 'none';
+      searchInput.value = '';
+    };
+    searchResults.appendChild(el);
+  });
+});
+document.addEventListener('click', e => {
+  if (!searchResults.contains(e.target) && e.target !== searchInput)
+    searchResults.style.display = 'none';
+});
+
+const hiddenCommunities = new Set();
+
+const selectAllCb = document.getElementById('select-all-cb');
+
+function updateSelectAllState() {
+  const total = LEGEND.length;
+  const hidden = hiddenCommunities.size;
+  selectAllCb.checked = hidden === 0;
+  selectAllCb.indeterminate = hidden > 0 && hidden < total;
+}
+
+function toggleAllCommunities(hide) {
+  document.querySelectorAll('.legend-item').forEach(item => {
+    hide ? item.classList.add('dimmed') : item.classList.remove('dimmed');
+  });
+  document.querySelectorAll('.legend-cb').forEach(cb => {
+    cb.checked = !hide;
+  });
+  LEGEND.forEach(c => {
+    if (hide) hiddenCommunities.add(c.cid); else hiddenCommunities.delete(c.cid);
+  });
+  const updates = RAW_NODES.map(n => ({ id: n.id, hidden: hide }));
+  nodesDS.update(updates);
+  updateSelectAllState();
+}
+
+const legendEl = document.getElementById('legend');
+LEGEND.forEach(c => {
+  const item = document.createElement('div');
+  item.className = 'legend-item';
+  const cb = document.createElement('input');
+  cb.type = 'checkbox';
+  cb.className = 'legend-cb';
+  cb.checked = true;
+  cb.addEventListener('change', (e) => {
+    e.stopPropagation();
+    if (cb.checked) {
+      hiddenCommunities.delete(c.cid);
+      item.classList.remove('dimmed');
+    } else {
+      hiddenCommunities.add(c.cid);
+      item.classList.add('dimmed');
+    }
+    const updates = RAW_NODES
+      .filter(n => n.community === c.cid)
+      .map(n => ({ id: n.id, hidden: !cb.checked }));
+    nodesDS.update(updates);
+    updateSelectAllState();
+  });
+  item.innerHTML = `<div class="legend-dot" style="background:${c.color}"></div>
+    <span class="legend-label">${c.label}</span>
+    <span class="legend-count">${c.count}</span>`;
+  item.prepend(cb);
+  item.onclick = (e) => {
+    if (e.target === cb) return;
+    cb.checked = !cb.checked;
+    cb.dispatchEvent(new Event('change'));
+  };
+  legendEl.appendChild(item);
+});
+</script>
+<script>
+// Render hyperedges as shaded regions
+const hyperedges = [{"id": "crp_collection_data_path", "label": "CRP Collection Data Path (host to PUF array)", "nodes": ["python_01_collect_crps_query_puf", "puf_schematic_zynq_ps", "puf_schematic_axi_gpio", "puf_schematic_puf_top_ip", "verilog_puf_driver_puf_driver"], "relation": "participate_in", "confidence": "INFERRED", "confidence_score": 0.75, "source_file": "puf schematic.pdf"}];
+// afterDrawing passes ctx already transformed to network coordinate space.
+// Draw node positions raw — no manual pan/zoom/DPR math needed.
+network.on('afterDrawing', function(ctx) {
+    hyperedges.forEach(h => {
+        const positions = h.nodes
+            .map(nid => network.getPositions([nid])[nid])
+            .filter(p => p !== undefined);
+        if (positions.length < 2) return;
+        ctx.save();
+        ctx.globalAlpha = 0.12;
+        ctx.fillStyle = '#6366f1';
+        ctx.strokeStyle = '#6366f1';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        // Centroid and expanded hull in network coordinates
+        const cx = positions.reduce((s, p) => s + p.x, 0) / positions.length;
+        const cy = positions.reduce((s, p) => s + p.y, 0) / positions.length;
+        const expanded = positions.map(p => ({
+            x: cx + (p.x - cx) * 1.15,
+            y: cy + (p.y - cy) * 1.15
+        }));
+        ctx.moveTo(expanded[0].x, expanded[0].y);
+        expanded.slice(1).forEach(p => ctx.lineTo(p.x, p.y));
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 0.4;
+        ctx.stroke();
+        // Label
+        ctx.globalAlpha = 0.8;
+        ctx.fillStyle = '#4f46e5';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(h.label, cx, cy - 5);
+        ctx.restore();
+    });
+});
+</script>
+</body>
+</html>

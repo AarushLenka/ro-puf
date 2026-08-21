@@ -1,0 +1,107 @@
+{
+  ".claude/settings.local.json": {
+    "mtime": 1787285437.996072,
+    "ast_hash": "6893ac62d65b23675a12e224f8d93d38",
+    "semantic_hash": "6893ac62d65b23675a12e224f8d93d38"
+  },
+  "PUF_HOME/verilog/clock_div_2.v": {
+    "mtime": 1785847746.0,
+    "ast_hash": "78aae1ffc1e7170c36127081e988328e",
+    "semantic_hash": "78aae1ffc1e7170c36127081e988328e"
+  },
+  "PUF_HOME/verilog/puf_array.v": {
+    "mtime": 1787145390.0,
+    "ast_hash": "66bf9ada0ef9433feaf6a4eae6b968ba",
+    "semantic_hash": "66bf9ada0ef9433feaf6a4eae6b968ba"
+  },
+  "PUF_HOME/verilog/puf_array_xor.v": {
+    "mtime": 1785852020.0,
+    "ast_hash": "1bff76436e2ae0e1dc1082f9091335ec",
+    "semantic_hash": "1bff76436e2ae0e1dc1082f9091335ec"
+  },
+  "PUF_HOME/verilog/puf_cell.v": {
+    "mtime": 1785847836.0,
+    "ast_hash": "cbbf1533c0f455fd2bcbe477607ff301",
+    "semantic_hash": "cbbf1533c0f455fd2bcbe477607ff301"
+  },
+  "PUF_HOME/verilog/puf_driver.v": {
+    "mtime": 1785852076.0,
+    "ast_hash": "33132db493e740f4e9b8a2e455520c81",
+    "semantic_hash": "33132db493e740f4e9b8a2e455520c81"
+  },
+  "PUF_HOME/verilog/puf_top.v": {
+    "mtime": 1787147660.0,
+    "ast_hash": "359f18f823b815d55608d8931c2e1131",
+    "semantic_hash": "359f18f823b815d55608d8931c2e1131"
+  },
+  "PUF_HOME/verilog/ring_osc.v": {
+    "mtime": 1785847792.0,
+    "ast_hash": "1db8eb3ec0b2ddf326f2867e65bfac3c",
+    "semantic_hash": "1db8eb3ec0b2ddf326f2867e65bfac3c"
+  },
+  "python/01_collect_crps.py": {
+    "mtime": 1785861835.6466832,
+    "ast_hash": "2ffcd47a5da9be61442bf8980c37c90b",
+    "semantic_hash": "2ffcd47a5da9be61442bf8980c37c90b"
+  },
+  "python/02_ml_attack.py": {
+    "mtime": 1785862051.5158868,
+    "ast_hash": "b09fe235331a2d127baf0031279bd381",
+    "semantic_hash": "b09fe235331a2d127baf0031279bd381"
+  },
+  "python/03_defense_verification.py": {
+    "mtime": 1785862064.0833356,
+    "ast_hash": "64f7ace421b5e2595ca50ca059002532",
+    "semantic_hash": "64f7ace421b5e2595ca50ca059002532"
+  },
+  "python/04_rl_challenge_selection.py": {
+    "mtime": 1785862112.3807876,
+    "ast_hash": "b4431ef4a9414330cd62320ea084fa7c",
+    "semantic_hash": "b4431ef4a9414330cd62320ea084fa7c"
+  },
+  "verilog/clock_div_2.v": {
+    "mtime": 1785847747.7633832,
+    "ast_hash": "78aae1ffc1e7170c36127081e988328e",
+    "semantic_hash": "78aae1ffc1e7170c36127081e988328e"
+  },
+  "verilog/puf_array.v": {
+    "mtime": 1785847884.6787744,
+    "ast_hash": "8c78c107c4d8d8b85ff5e98892dfbf6e",
+    "semantic_hash": "8c78c107c4d8d8b85ff5e98892dfbf6e"
+  },
+  "verilog/puf_array_xor.v": {
+    "mtime": 1785852021.800165,
+    "ast_hash": "1bff76436e2ae0e1dc1082f9091335ec",
+    "semantic_hash": "1bff76436e2ae0e1dc1082f9091335ec"
+  },
+  "verilog/puf_cell.v": {
+    "mtime": 1785847837.3444512,
+    "ast_hash": "cbbf1533c0f455fd2bcbe477607ff301",
+    "semantic_hash": "cbbf1533c0f455fd2bcbe477607ff301"
+  },
+  "verilog/puf_driver.v": {
+    "mtime": 1785852076.6071765,
+    "ast_hash": "33132db493e740f4e9b8a2e455520c81",
+    "semantic_hash": "33132db493e740f4e9b8a2e455520c81"
+  },
+  "verilog/puf_top.v": {
+    "mtime": 1787147573.549037,
+    "ast_hash": "359f18f823b815d55608d8931c2e1131",
+    "semantic_hash": "359f18f823b815d55608d8931c2e1131"
+  },
+  "verilog/ring_osc.v": {
+    "mtime": 1785847792.4074352,
+    "ast_hash": "1db8eb3ec0b2ddf326f2867e65bfac3c",
+    "semantic_hash": "1db8eb3ec0b2ddf326f2867e65bfac3c"
+  },
+  "README.md": {
+    "mtime": 1785400918.1112602,
+    "ast_hash": "6b9fda91f02755368a114f318c98773c",
+    "semantic_hash": "6b9fda91f02755368a114f318c98773c"
+  },
+  "puf schematic.pdf": {
+    "mtime": 1787282692.8522139,
+    "ast_hash": "7a6662acd1b1124bce2eacdbeec6c8e1",
+    "semantic_hash": "7a6662acd1b1124bce2eacdbeec6c8e1"
+  }
+}
