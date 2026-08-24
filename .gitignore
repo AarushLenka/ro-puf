@@ -6,7 +6,7 @@
 *.sim/
 #*.bit
 #*.hwh
-*.xsa
+#*.xsa
 *.jou
 *.log
 *.str
