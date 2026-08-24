@@ -6,10 +6,7 @@
  #     set_property ALLOW_COMBINATORIAL_LOOPS TRUE $ro_loop_nets
  # }
   
- #set_property ALLOW_COMBINATORIAL_LOOPS TRUE \
- #     [get_nets -hierarchical -quiet -filter {NAME =~ "*/ro/w1"}]
- 
- set_property ALLOW_COMBINATORIAL_LOOPS TRUE \
-      [get_nets -hierarchical -regexp {.*\/ro\/w1$}]
+set_property ALLOW_COMBINATORIAL_LOOPS TRUE \
+    [get_nets -hierarchical -quiet -filter {NAME =~ "*/ro/w1"}]
  
  
