@@ -1,0 +1,456 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
+| Date         : Mon Aug 24 19:16:35 2026
+| Host         : LAPTOP-QLGDPTAA running 64-bit major release  (build 9200)
+| Command      : report_clock_utilization -file puf_bd_wrapper_clock_utilization_routed.rpt
+| Design       : puf_bd_wrapper
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Clock Utilization Report
+
+Table of Contents
+-----------------
+1. Clock Primitive Utilization
+2. Global Clock Resources
+3. Global Clock Source Details
+4. Local Clock Details
+5. Clock Regions: Key Resource Utilization
+6. Clock Regions : Global Clock Summary
+7. Device Cell Placement Summary for Global Clock g0
+8. Clock Region Cell Placement per Global Clock: Region X0Y1
+9. Clock Region Cell Placement per Global Clock: Region X1Y1
+10. Clock Region Cell Placement per Global Clock: Region X0Y2
+11. Clock Region Cell Placement per Global Clock: Region X1Y2
+
+1. Clock Primitive Utilization
+------------------------------
+
++----------+------+-----------+-----+--------------+--------+
+| Type     | Used | Available | LOC | Clock Region | Pblock |
++----------+------+-----------+-----+--------------+--------+
+| BUFGCTRL |    1 |        32 |   0 |            0 |      0 |
+| BUFH     |    0 |        72 |   0 |            0 |      0 |
+| BUFIO    |    0 |        16 |   0 |            0 |      0 |
+| BUFMR    |    0 |         8 |   0 |            0 |      0 |
+| BUFR     |    0 |        16 |   0 |            0 |      0 |
+| MMCM     |    0 |         4 |   0 |            0 |      0 |
+| PLL      |    0 |         4 |   0 |            0 |      0 |
++----------+------+-----------+-----+--------------+--------+
+
+
+2. Global Clock Resources
+-------------------------
+
++-----------+-----------+-----------------+------------+----------------+--------------+-------------------+-------------+-----------------+--------------+------------+------------------------------------------------------------------------+----------------------------------------------+
+| Global Id | Source Id | Driver Type/Pin | Constraint | Site           | Clock Region | Load Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock      | Driver Pin                                                             | Net                                          |
++-----------+-----------+-----------------+------------+----------------+--------------+-------------------+-------------+-----------------+--------------+------------+------------------------------------------------------------------------+----------------------------------------------+
+| g0        | src0      | BUFG/O          | None       | BUFGCTRL_X0Y16 | n/a          |                 4 |        1424 |               0 |       20.000 | clk_fpga_0 | puf_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG/O | puf_bd_i/processing_system7_0/inst/FCLK_CLK0 |
++-----------+-----------+-----------------+------------+----------------+--------------+-------------------+-------------+-----------------+--------------+------------+------------------------------------------------------------------------+----------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+
+
+3. Global Clock Source Details
+------------------------------
+
++-----------+-----------+-----------------+------------+----------+--------------+-------------+-----------------+---------------------+--------------+-----------------------------------------------------+-----------------------------------------------------------+
+| Source Id | Global Id | Driver Type/Pin | Constraint | Site     | Clock Region | Clock Loads | Non-Clock Loads | Source Clock Period | Source Clock | Driver Pin                                          | Net                                                       |
++-----------+-----------+-----------------+------------+----------+--------------+-------------+-----------------+---------------------+--------------+-----------------------------------------------------+-----------------------------------------------------------+
+| src0      | g0        | PS7/FCLKCLK[0]  | PS7_X0Y0   | PS7_X0Y0 | X0Y2         |           1 |               0 |              20.000 | clk_fpga_0   | puf_bd_i/processing_system7_0/inst/PS7_i/FCLKCLK[0] | puf_bd_i/processing_system7_0/inst/FCLK_CLK_unbuffered[0] |
++-----------+-----------+-----------------+------------+----------+--------------+-------------+-----------------+---------------------+--------------+-----------------------------------------------------+-----------------------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+
+
+4. Local Clock Details
+----------------------
+
++----------+-----------------+------------+---------------------+--------------+-------------+-----------------+--------------+-------+-------------------------------------------------------------------------------+----------------------------------------------------------------+
+| Local Id | Driver Type/Pin | Constraint | Site/BEL            | Clock Region | Clock Loads | Non-Clock Loads | Clock Period | Clock | Driver Pin                                                                    | Net                                                            |
++----------+-----------------+------------+---------------------+--------------+-------------+-----------------+--------------+-------+-------------------------------------------------------------------------------+----------------------------------------------------------------+
+| 0        | LUT1/O          | None       | SLICE_X41Y82/A6LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[0].ro/wop  |
+| 1        | LUT1/O          | None       | SLICE_X38Y85/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[10].ro/wop |
+| 2        | LUT1/O          | None       | SLICE_X40Y81/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[11].ro/wop |
+| 3        | LUT1/O          | None       | SLICE_X39Y85/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[12].ro/wop |
+| 4        | LUT1/O          | None       | SLICE_X39Y86/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[13].ro/wop |
+| 5        | LUT1/O          | None       | SLICE_X42Y85/C5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[14].ro/wop |
+| 6        | LUT1/O          | None       | SLICE_X44Y84/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[15].ro/wop |
+| 7        | LUT1/O          | None       | SLICE_X42Y84/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[1].ro/wop  |
+| 8        | LUT1/O          | None       | SLICE_X40Y79/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[2].ro/wop  |
+| 9        | LUT1/O          | None       | SLICE_X49Y86/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[3].ro/wop  |
+| 10       | LUT1/O          | None       | SLICE_X38Y83/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[4].ro/wop  |
+| 11       | LUT1/O          | None       | SLICE_X36Y84/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[5].ro/wop  |
+| 12       | LUT1/O          | None       | SLICE_X47Y86/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[6].ro/wop  |
+| 13       | LUT1/O          | None       | SLICE_X47Y85/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[7].ro/wop  |
+| 14       | LUT1/O          | None       | SLICE_X42Y86/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[8].ro/wop  |
+| 15       | LUT1/O          | None       | SLICE_X40Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[9].ro/wop  |
+| 16       | LUT1/O          | None       | SLICE_X56Y118/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[0].ro/wop  |
+| 17       | LUT1/O          | None       | SLICE_X46Y122/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[10].ro/wop |
+| 18       | LUT1/O          | None       | SLICE_X47Y122/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[11].ro/wop |
+| 19       | LUT1/O          | None       | SLICE_X50Y121/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[12].ro/wop |
+| 20       | LUT1/O          | None       | SLICE_X52Y119/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[13].ro/wop |
+| 21       | LUT1/O          | None       | SLICE_X48Y122/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[14].ro/wop |
+| 22       | LUT1/O          | None       | SLICE_X47Y119/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[15].ro/wop |
+| 23       | LUT1/O          | None       | SLICE_X44Y115/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[1].ro/wop  |
+| 24       | LUT1/O          | None       | SLICE_X46Y118/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[2].ro/wop  |
+| 25       | LUT1/O          | None       | SLICE_X46Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[3].ro/wop  |
+| 26       | LUT1/O          | None       | SLICE_X50Y120/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[4].ro/wop  |
+| 27       | LUT1/O          | None       | SLICE_X54Y119/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[5].ro/wop  |
+| 28       | LUT1/O          | None       | SLICE_X52Y120/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[6].ro/wop  |
+| 29       | LUT1/O          | None       | SLICE_X48Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[7].ro/wop  |
+| 30       | LUT1/O          | None       | SLICE_X46Y116/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[8].ro/wop  |
+| 31       | LUT1/O          | None       | SLICE_X44Y116/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[9].ro/wop  |
+| 32       | LUT1/O          | None       | SLICE_X49Y84/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[0].ro/wop  |
+| 33       | LUT1/O          | None       | SLICE_X44Y81/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[10].ro/wop |
+| 34       | LUT1/O          | None       | SLICE_X48Y82/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[11].ro/wop |
+| 35       | LUT1/O          | None       | SLICE_X43Y82/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[12].ro/wop |
+| 36       | LUT1/O          | None       | SLICE_X43Y84/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[13].ro/wop |
+| 37       | LUT1/O          | None       | SLICE_X49Y83/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[14].ro/wop |
+| 38       | LUT1/O          | None       | SLICE_X47Y84/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[15].ro/wop |
+| 39       | LUT1/O          | None       | SLICE_X43Y85/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[1].ro/wop  |
+| 40       | LUT1/O          | None       | SLICE_X46Y82/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[2].ro/wop  |
+| 41       | LUT1/O          | None       | SLICE_X50Y87/A5LUT  | X1Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[3].ro/wop  |
+| 42       | LUT1/O          | None       | SLICE_X43Y81/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[4].ro/wop  |
+| 43       | LUT1/O          | None       | SLICE_X45Y83/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[5].ro/wop  |
+| 44       | LUT1/O          | None       | SLICE_X49Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[6].ro/wop  |
+| 45       | LUT1/O          | None       | SLICE_X45Y85/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[7].ro/wop  |
+| 46       | LUT1/O          | None       | SLICE_X47Y83/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[8].ro/wop  |
+| 47       | LUT1/O          | None       | SLICE_X41Y85/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[9].ro/wop  |
+| 48       | LUT1/O          | None       | SLICE_X45Y116/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[0].ro/wop  |
+| 49       | LUT1/O          | None       | SLICE_X40Y118/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[10].ro/wop |
+| 50       | LUT1/O          | None       | SLICE_X42Y119/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[11].ro/wop |
+| 51       | LUT1/O          | None       | SLICE_X44Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[12].ro/wop |
+| 52       | LUT1/O          | None       | SLICE_X44Y118/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[13].ro/wop |
+| 53       | LUT1/O          | None       | SLICE_X42Y122/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[14].ro/wop |
+| 54       | LUT1/O          | None       | SLICE_X42Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[15].ro/wop |
+| 55       | LUT1/O          | None       | SLICE_X41Y118/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[1].ro/wop  |
+| 56       | LUT1/O          | None       | SLICE_X38Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[2].ro/wop  |
+| 57       | LUT1/O          | None       | SLICE_X41Y117/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[3].ro/wop  |
+| 58       | LUT1/O          | None       | SLICE_X42Y121/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[4].ro/wop  |
+| 59       | LUT1/O          | None       | SLICE_X46Y117/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[5].ro/wop  |
+| 60       | LUT1/O          | None       | SLICE_X41Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[6].ro/wop  |
+| 61       | LUT1/O          | None       | SLICE_X40Y119/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[7].ro/wop  |
+| 62       | LUT1/O          | None       | SLICE_X45Y114/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[8].ro/wop  |
+| 63       | LUT1/O          | None       | SLICE_X42Y116/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[9].ro/wop  |
+| 64       | LUT1/O          | None       | SLICE_X47Y88/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[0].ro/wop  |
+| 65       | LUT1/O          | None       | SLICE_X41Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[10].ro/wop |
+| 66       | LUT1/O          | None       | SLICE_X48Y90/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[11].ro/wop |
+| 67       | LUT1/O          | None       | SLICE_X38Y90/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[12].ro/wop |
+| 68       | LUT1/O          | None       | SLICE_X40Y92/C5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[13].ro/wop |
+| 69       | LUT1/O          | None       | SLICE_X48Y94/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[14].ro/wop |
+| 70       | LUT1/O          | None       | SLICE_X48Y91/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[15].ro/wop |
+| 71       | LUT1/O          | None       | SLICE_X43Y95/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[1].ro/wop  |
+| 72       | LUT1/O          | None       | SLICE_X41Y86/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[2].ro/wop  |
+| 73       | LUT1/O          | None       | SLICE_X49Y93/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[3].ro/wop  |
+| 74       | LUT1/O          | None       | SLICE_X36Y88/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[4].ro/wop  |
+| 75       | LUT1/O          | None       | SLICE_X39Y89/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[5].ro/wop  |
+| 76       | LUT1/O          | None       | SLICE_X48Y92/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[6].ro/wop  |
+| 77       | LUT1/O          | None       | SLICE_X49Y90/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[7].ro/wop  |
+| 78       | LUT1/O          | None       | SLICE_X47Y90/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[8].ro/wop  |
+| 79       | LUT1/O          | None       | SLICE_X41Y88/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[9].ro/wop  |
+| 80       | LUT1/O          | None       | SLICE_X46Y105/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[0].ro/wop  |
+| 81       | LUT1/O          | None       | SLICE_X43Y109/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[10].ro/wop |
+| 82       | LUT1/O          | None       | SLICE_X41Y109/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[11].ro/wop |
+| 83       | LUT1/O          | None       | SLICE_X52Y112/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[12].ro/wop |
+| 84       | LUT1/O          | None       | SLICE_X48Y104/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[13].ro/wop |
+| 85       | LUT1/O          | None       | SLICE_X44Y114/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[14].ro/wop |
+| 86       | LUT1/O          | None       | SLICE_X48Y113/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[15].ro/wop |
+| 87       | LUT1/O          | None       | SLICE_X45Y110/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[1].ro/wop  |
+| 88       | LUT1/O          | None       | SLICE_X44Y111/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[2].ro/wop  |
+| 89       | LUT1/O          | None       | SLICE_X47Y114/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[3].ro/wop  |
+| 90       | LUT1/O          | None       | SLICE_X54Y110/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[4].ro/wop  |
+| 91       | LUT1/O          | None       | SLICE_X48Y106/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[5].ro/wop  |
+| 92       | LUT1/O          | None       | SLICE_X47Y112/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[6].ro/wop  |
+| 93       | LUT1/O          | None       | SLICE_X44Y112/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[7].ro/wop  |
+| 94       | LUT1/O          | None       | SLICE_X45Y109/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[8].ro/wop  |
+| 95       | LUT1/O          | None       | SLICE_X40Y109/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[9].ro/wop  |
+| 96       | LUT1/O          | None       | SLICE_X47Y89/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[0].ro/wop  |
+| 97       | LUT1/O          | None       | SLICE_X44Y85/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[10].ro/wop |
+| 98       | LUT1/O          | None       | SLICE_X43Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[11].ro/wop |
+| 99       | LUT1/O          | None       | SLICE_X37Y86/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[12].ro/wop |
+| 100      | LUT1/O          | None       | SLICE_X44Y92/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[13].ro/wop |
+| 101      | LUT1/O          | None       | SLICE_X45Y87/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[14].ro/wop |
+| 102      | LUT1/O          | None       | SLICE_X51Y89/A5LUT  | X1Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[15].ro/wop |
+| 103      | LUT1/O          | None       | SLICE_X43Y93/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[1].ro/wop  |
+| 104      | LUT1/O          | None       | SLICE_X45Y88/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[2].ro/wop  |
+| 105      | LUT1/O          | None       | SLICE_X48Y89/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[3].ro/wop  |
+| 106      | LUT1/O          | None       | SLICE_X41Y92/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[4].ro/wop  |
+| 107      | LUT1/O          | None       | SLICE_X45Y89/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[5].ro/wop  |
+| 108      | LUT1/O          | None       | SLICE_X53Y88/A5LUT  | X1Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[6].ro/wop  |
+| 109      | LUT1/O          | None       | SLICE_X49Y92/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[7].ro/wop  |
+| 110      | LUT1/O          | None       | SLICE_X47Y92/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[8].ro/wop  |
+| 111      | LUT1/O          | None       | SLICE_X42Y92/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[9].ro/wop  |
+| 112      | LUT1/O          | None       | SLICE_X52Y116/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[0].ro/wop  |
+| 113      | LUT1/O          | None       | SLICE_X49Y113/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[10].ro/wop |
+| 114      | LUT1/O          | None       | SLICE_X52Y117/B5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[11].ro/wop |
+| 115      | LUT1/O          | None       | SLICE_X56Y115/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[12].ro/wop |
+| 116      | LUT1/O          | None       | SLICE_X54Y114/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[13].ro/wop |
+| 117      | LUT1/O          | None       | SLICE_X55Y118/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[14].ro/wop |
+| 118      | LUT1/O          | None       | SLICE_X48Y121/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[15].ro/wop |
+| 119      | LUT1/O          | None       | SLICE_X47Y116/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[1].ro/wop  |
+| 120      | LUT1/O          | None       | SLICE_X46Y115/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[2].ro/wop  |
+| 121      | LUT1/O          | None       | SLICE_X56Y116/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[3].ro/wop  |
+| 122      | LUT1/O          | None       | SLICE_X54Y117/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[4].ro/wop  |
+| 123      | LUT1/O          | None       | SLICE_X56Y114/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[5].ro/wop  |
+| 124      | LUT1/O          | None       | SLICE_X54Y115/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[6].ro/wop  |
+| 125      | LUT1/O          | None       | SLICE_X47Y115/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[7].ro/wop  |
+| 126      | LUT1/O          | None       | SLICE_X51Y115/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[8].ro/wop  |
+| 127      | LUT1/O          | None       | SLICE_X45Y113/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g1[9].ro/wop  |
+| 128      | LUT1/O          | None       | SLICE_X34Y81/C5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[0].ro/wop  |
+| 129      | LUT1/O          | None       | SLICE_X33Y78/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[10].ro/wop |
+| 130      | LUT1/O          | None       | SLICE_X39Y81/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[11].ro/wop |
+| 131      | LUT1/O          | None       | SLICE_X35Y78/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[12].ro/wop |
+| 132      | LUT1/O          | None       | SLICE_X35Y83/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[13].ro/wop |
+| 133      | LUT1/O          | None       | SLICE_X38Y82/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[14].ro/wop |
+| 134      | LUT1/O          | None       | SLICE_X39Y82/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[15].ro/wop |
+| 135      | LUT1/O          | None       | SLICE_X29Y88/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[1].ro/wop  |
+| 136      | LUT1/O          | None       | SLICE_X37Y80/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[2].ro/wop  |
+| 137      | LUT1/O          | None       | SLICE_X39Y83/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[3].ro/wop  |
+| 138      | LUT1/O          | None       | SLICE_X35Y81/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[4].ro/wop  |
+| 139      | LUT1/O          | None       | SLICE_X37Y81/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[5].ro/wop  |
+| 140      | LUT1/O          | None       | SLICE_X33Y85/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[6].ro/wop  |
+| 141      | LUT1/O          | None       | SLICE_X37Y84/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[7].ro/wop  |
+| 142      | LUT1/O          | None       | SLICE_X34Y84/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[8].ro/wop  |
+| 143      | LUT1/O          | None       | SLICE_X29Y79/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g0[9].ro/wop  |
+| 144      | LUT1/O          | None       | SLICE_X40Y114/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[0].ro/wop  |
+| 145      | LUT1/O          | None       | SLICE_X34Y113/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[10].ro/wop |
+| 146      | LUT1/O          | None       | SLICE_X32Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[11].ro/wop |
+| 147      | LUT1/O          | None       | SLICE_X41Y114/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[12].ro/wop |
+| 148      | LUT1/O          | None       | SLICE_X43Y116/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[13].ro/wop |
+| 149      | LUT1/O          | None       | SLICE_X36Y121/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[14].ro/wop |
+| 150      | LUT1/O          | None       | SLICE_X37Y118/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[15].ro/wop |
+| 151      | LUT1/O          | None       | SLICE_X39Y117/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[1].ro/wop  |
+| 152      | LUT1/O          | None       | SLICE_X32Y119/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[2].ro/wop  |
+| 153      | LUT1/O          | None       | SLICE_X36Y112/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[3].ro/wop  |
+| 154      | LUT1/O          | None       | SLICE_X41Y115/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[4].ro/wop  |
+| 155      | LUT1/O          | None       | SLICE_X42Y113/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[5].ro/wop  |
+| 156      | LUT1/O          | None       | SLICE_X38Y115/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[6].ro/wop  |
+| 157      | LUT1/O          | None       | SLICE_X32Y118/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[7].ro/wop  |
+| 158      | LUT1/O          | None       | SLICE_X41Y113/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[8].ro/wop  |
+| 159      | LUT1/O          | None       | SLICE_X40Y112/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[9].ro/wop  |
+| 160      | LUT1/O          | None       | SLICE_X35Y80/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[0].ro/wop  |
+| 161      | LUT1/O          | None       | SLICE_X28Y80/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[10].ro/wop |
+| 162      | LUT1/O          | None       | SLICE_X28Y79/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[11].ro/wop |
+| 163      | LUT1/O          | None       | SLICE_X30Y79/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[12].ro/wop |
+| 164      | LUT1/O          | None       | SLICE_X28Y82/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[13].ro/wop |
+| 165      | LUT1/O          | None       | SLICE_X33Y81/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[14].ro/wop |
+| 166      | LUT1/O          | None       | SLICE_X33Y83/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[15].ro/wop |
+| 167      | LUT1/O          | None       | SLICE_X37Y89/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[1].ro/wop  |
+| 168      | LUT1/O          | None       | SLICE_X33Y77/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[2].ro/wop  |
+| 169      | LUT1/O          | None       | SLICE_X35Y86/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[3].ro/wop  |
+| 170      | LUT1/O          | None       | SLICE_X27Y80/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[4].ro/wop  |
+| 171      | LUT1/O          | None       | SLICE_X31Y80/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[5].ro/wop  |
+| 172      | LUT1/O          | None       | SLICE_X37Y85/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[6].ro/wop  |
+| 173      | LUT1/O          | None       | SLICE_X33Y89/C5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[7].ro/wop  |
+| 174      | LUT1/O          | None       | SLICE_X37Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[8].ro/wop  |
+| 175      | LUT1/O          | None       | SLICE_X29Y80/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[9].ro/wop  |
+| 176      | LUT1/O          | None       | SLICE_X52Y110/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[0].ro/wop  |
+| 177      | LUT1/O          | None       | SLICE_X46Y107/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[10].ro/wop |
+| 178      | LUT1/O          | None       | SLICE_X53Y110/B5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[11].ro/wop |
+| 179      | LUT1/O          | None       | SLICE_X55Y112/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[12].ro/wop |
+| 180      | LUT1/O          | None       | SLICE_X53Y108/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[13].ro/wop |
+| 181      | LUT1/O          | None       | SLICE_X54Y111/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[14].ro/wop |
+| 182      | LUT1/O          | None       | SLICE_X50Y112/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[15].ro/wop |
+| 183      | LUT1/O          | None       | SLICE_X47Y111/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[1].ro/wop  |
+| 184      | LUT1/O          | None       | SLICE_X49Y111/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[2].ro/wop  |
+| 185      | LUT1/O          | None       | SLICE_X54Y107/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[3].ro/wop  |
+| 186      | LUT1/O          | None       | SLICE_X52Y113/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[4].ro/wop  |
+| 187      | LUT1/O          | None       | SLICE_X54Y109/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[5].ro/wop  |
+| 188      | LUT1/O          | None       | SLICE_X51Y113/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[6].ro/wop  |
+| 189      | LUT1/O          | None       | SLICE_X50Y107/A5LUT | X1Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[7].ro/wop  |
+| 190      | LUT1/O          | None       | SLICE_X47Y107/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[8].ro/wop  |
+| 191      | LUT1/O          | None       | SLICE_X45Y106/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[9].ro/wop  |
+| 192      | LUT1/O          | None       | SLICE_X29Y81/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[0].ro/wop  |
+| 193      | LUT1/O          | None       | SLICE_X27Y83/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[10].ro/wop |
+| 194      | LUT1/O          | None       | SLICE_X33Y86/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[11].ro/wop |
+| 195      | LUT1/O          | None       | SLICE_X27Y81/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[12].ro/wop |
+| 196      | LUT1/O          | None       | SLICE_X27Y85/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[13].ro/wop |
+| 197      | LUT1/O          | None       | SLICE_X31Y82/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[14].ro/wop |
+| 198      | LUT1/O          | None       | SLICE_X29Y82/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[15].ro/wop |
+| 199      | LUT1/O          | None       | SLICE_X31Y86/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[1].ro/wop  |
+| 200      | LUT1/O          | None       | SLICE_X31Y81/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[2].ro/wop  |
+| 201      | LUT1/O          | None       | SLICE_X28Y86/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[3].ro/wop  |
+| 202      | LUT1/O          | None       | SLICE_X26Y84/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[4].ro/wop  |
+| 203      | LUT1/O          | None       | SLICE_X27Y84/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[5].ro/wop  |
+| 204      | LUT1/O          | None       | SLICE_X31Y83/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[6].ro/wop  |
+| 205      | LUT1/O          | None       | SLICE_X31Y90/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[7].ro/wop  |
+| 206      | LUT1/O          | None       | SLICE_X33Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[8].ro/wop  |
+| 207      | LUT1/O          | None       | SLICE_X29Y86/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g0[9].ro/wop  |
+| 208      | LUT1/O          | None       | SLICE_X30Y115/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[0].ro/wop  |
+| 209      | LUT1/O          | None       | SLICE_X32Y112/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[10].ro/wop |
+| 210      | LUT1/O          | None       | SLICE_X32Y116/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[11].ro/wop |
+| 211      | LUT1/O          | None       | SLICE_X38Y122/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[12].ro/wop |
+| 212      | LUT1/O          | None       | SLICE_X32Y117/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[13].ro/wop |
+| 213      | LUT1/O          | None       | SLICE_X34Y122/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[14].ro/wop |
+| 214      | LUT1/O          | None       | SLICE_X33Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[15].ro/wop |
+| 215      | LUT1/O          | None       | SLICE_X35Y114/B5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[1].ro/wop  |
+| 216      | LUT1/O          | None       | SLICE_X33Y117/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[2].ro/wop  |
+| 217      | LUT1/O          | None       | SLICE_X33Y113/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[3].ro/wop  |
+| 218      | LUT1/O          | None       | SLICE_X39Y122/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[4].ro/wop  |
+| 219      | LUT1/O          | None       | SLICE_X36Y119/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[5].ro/wop  |
+| 220      | LUT1/O          | None       | SLICE_X36Y120/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[6].ro/wop  |
+| 221      | LUT1/O          | None       | SLICE_X32Y114/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[7].ro/wop  |
+| 222      | LUT1/O          | None       | SLICE_X38Y113/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[8].ro/wop  |
+| 223      | LUT1/O          | None       | SLICE_X37Y114/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[6].cell_inst/g1[9].ro/wop  |
+| 224      | LUT1/O          | None       | SLICE_X28Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[0].ro/wop  |
+| 225      | LUT1/O          | None       | SLICE_X29Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[10].ro/wop |
+| 226      | LUT1/O          | None       | SLICE_X31Y89/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[11].ro/wop |
+| 227      | LUT1/O          | None       | SLICE_X26Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[12].ro/wop |
+| 228      | LUT1/O          | None       | SLICE_X31Y87/B5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[13].ro/wop |
+| 229      | LUT1/O          | None       | SLICE_X38Y94/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[14].ro/wop |
+| 230      | LUT1/O          | None       | SLICE_X27Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[15].ro/wop |
+| 231      | LUT1/O          | None       | SLICE_X27Y89/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[1].ro/wop  |
+| 232      | LUT1/O          | None       | SLICE_X37Y88/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[2].ro/wop  |
+| 233      | LUT1/O          | None       | SLICE_X37Y92/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[3].ro/wop  |
+| 234      | LUT1/O          | None       | SLICE_X32Y87/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[4].ro/wop  |
+| 235      | LUT1/O          | None       | SLICE_X26Y88/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[5].ro/wop  |
+| 236      | LUT1/O          | None       | SLICE_X38Y91/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[6].ro/wop  |
+| 237      | LUT1/O          | None       | SLICE_X41Y90/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[7].ro/wop  |
+| 238      | LUT1/O          | None       | SLICE_X39Y90/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[8].ro/wop  |
+| 239      | LUT1/O          | None       | SLICE_X27Y88/A5LUT  | X0Y1         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[9].ro/wop  |
+| 240      | LUT1/O          | None       | SLICE_X39Y108/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[0].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[0].ro/wop  |
+| 241      | LUT1/O          | None       | SLICE_X32Y110/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[10].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[10].ro/wop |
+| 242      | LUT1/O          | None       | SLICE_X32Y111/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[11].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[11].ro/wop |
+| 243      | LUT1/O          | None       | SLICE_X41Y107/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[12].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[12].ro/wop |
+| 244      | LUT1/O          | None       | SLICE_X37Y106/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[13].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[13].ro/wop |
+| 245      | LUT1/O          | None       | SLICE_X39Y109/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[14].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[14].ro/wop |
+| 246      | LUT1/O          | None       | SLICE_X33Y111/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[15].ro/wop_inferred_i_1/O | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[15].ro/wop |
+| 247      | LUT1/O          | None       | SLICE_X37Y108/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[1].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[1].ro/wop  |
+| 248      | LUT1/O          | None       | SLICE_X37Y111/C5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[2].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[2].ro/wop  |
+| 249      | LUT1/O          | None       | SLICE_X32Y109/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[3].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[3].ro/wop  |
+| 250      | LUT1/O          | None       | SLICE_X43Y108/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[4].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[4].ro/wop  |
+| 251      | LUT1/O          | None       | SLICE_X41Y110/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[5].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[5].ro/wop  |
+| 252      | LUT1/O          | None       | SLICE_X38Y112/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[6].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[6].ro/wop  |
+| 253      | LUT1/O          | None       | SLICE_X37Y112/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[7].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[7].ro/wop  |
+| 254      | LUT1/O          | None       | SLICE_X36Y107/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[8].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[8].ro/wop  |
+| 255      | LUT1/O          | None       | SLICE_X33Y109/A5LUT | X0Y2         |           1 |               0 |              |       | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[9].ro/wop_inferred_i_1/O  | puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[9].ro/wop  |
++----------+-----------------+------------+---------------------+--------------+-------------+-----------------+--------------+-------+-------------------------------------------------------------------------------+----------------------------------------------------------------+
+* Local Clocks in this context represents only clocks driven by non-global buffers
+** Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+*** Non-Clock Loads column represents cell count of non-clock pin loads
+
+
+5. Clock Regions: Key Resource Utilization
+------------------------------------------
+
++-------------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+--------------+
+|                   | Global Clock |     BUFRs    |    BUFMRs    |    BUFIOs    |     MMCM     |      PLL     |      GT      |      PCI     |    ILOGIC    |    OLOGIC    |      FF      |     LUTM     |    RAMB18    |    RAMB36    |    DSP48E2   |
++-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
+| Clock Region Name | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail |
++-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
+| X0Y0              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  2500 |    0 |  1000 |    0 |    60 |    0 |    30 |    0 |    60 |
+| X1Y0              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  3200 |    0 |   850 |    0 |    60 |    0 |    30 |    0 |    40 |
+| X0Y1              |    1 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 | 1026 |  1200 |  335 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X1Y1              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   50 |  2600 |   20 |   850 |    0 |    60 |    0 |    30 |    0 |    40 |
+| X0Y2              |    1 |    12 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |    0 |     0 |  517 |  1200 |  171 |   400 |    0 |    20 |    0 |    10 |    0 |    20 |
+| X1Y2              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |   84 |  2600 |   31 |   850 |    0 |    60 |    0 |    30 |    0 |    40 |
++-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
+* Global Clock column represents track count; while other columns represents cell counts
+
+
+6. Clock Regions : Global Clock Summary
+---------------------------------------
+
+All Modules
++----+----+----+
+|    | X0 | X1 |
++----+----+----+
+| Y2 |  0 |  0 |
+| Y1 |  0 |  0 |
+| Y0 |  0 |  0 |
++----+----+----+
+
+
+7. Device Cell Placement Summary for Global Clock g0
+----------------------------------------------------
+
++-----------+-----------------+-------------------+------------+-------------+----------------+-------------+----------+----------------+----------+----------------------------------------------+
+| Global Id | Driver Type/Pin | Driver Region (D) | Clock      | Period (ns) | Waveform (ns)  | Slice Loads | IO Loads | Clocking Loads | GT Loads | Net                                          |
++-----------+-----------------+-------------------+------------+-------------+----------------+-------------+----------+----------------+----------+----------------------------------------------+
+| g0        | BUFG/O          | n/a               | clk_fpga_0 |      20.000 | {0.000 10.000} |        1424 |        0 |              0 |        0 | puf_bd_i/processing_system7_0/inst/FCLK_CLK0 |
++-----------+-----------------+-------------------+------------+-------------+----------------+-------------+----------+----------------+----------+----------------------------------------------+
+* Slice Loads column represents load cell count of all cell types other than IO, GT and clock resources
+** IO Loads column represents load cell count of IO types
+*** Clocking Loads column represents load cell count that are clock resources (global clock buffer, MMCM, PLL, etc)
+**** GT Loads column represents load cell count of GT types
+
+
++----+------+-----+-----------------------+
+|    | X0   | X1  | HORIZONTAL PROG DELAY |
++----+------+-----+-----------------------+
+| Y2 |  415 |  59 |                     0 |
+| Y1 |  904 |  46 |                     0 |
+| Y0 |    0 |   0 |                     - |
++----+------+-----+-----------------------+
+
+
+8. Clock Region Cell Placement per Global Clock: Region X0Y1
+------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF  | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                          |
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+| g0        | n/a   | BUFG/O          | None       |         904 |               0 | 902 |           2 |    0 |   0 |  0 |    0 |   0 |       0 | puf_bd_i/processing_system7_0/inst/FCLK_CLK0 |
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+9. Clock Region Cell Placement per Global Clock: Region X1Y1
+------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                          |
++-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+| g0        | n/a   | BUFG/O          | None       |          46 |               0 | 46 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | puf_bd_i/processing_system7_0/inst/FCLK_CLK0 |
++-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+10. Clock Region Cell Placement per Global Clock: Region X0Y2
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF  | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                          |
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+| g0        | n/a   | BUFG/O          | None       |         415 |               0 | 414 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | puf_bd_i/processing_system7_0/inst/FCLK_CLK0 |
++-----------+-------+-----------------+------------+-------------+-----------------+-----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+11. Clock Region Cell Placement per Global Clock: Region X1Y2
+-------------------------------------------------------------
+
++-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+| Global Id | Track | Driver Type/Pin | Constraint | Clock Loads | Non-Clock Loads | FF | Memory LUTs | RAMB | DSP | GT | MMCM | PLL | Hard IP | Net                                          |
++-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+| g0        | n/a   | BUFG/O          | None       |          59 |               0 | 59 |           0 |    0 |   0 |  0 |    0 |   0 |       0 | puf_bd_i/processing_system7_0/inst/FCLK_CLK0 |
++-----------+-------+-----------------+------------+-------------+-----------------+----+-------------+------+-----+----+------+-----+---------+----------------------------------------------+
+* Clock Loads column represents cell count of net connects that connect to a clock pin. Internal cell leaf pins are not considered
+** Non-Clock Loads column represents cell count of non-clock pin loads
+*** Columns FF, LUTRAM, RAMB through 'Hard IP' represents load cell counts
+
+
+
+# Location of BUFG Primitives 
+set_property LOC BUFGCTRL_X0Y16 [get_cells puf_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG]
+
+# Location of IO Primitives which is load of clock spine
+
+# Location of clock ports
+
+# Clock net "puf_bd_i/processing_system7_0/inst/FCLK_CLK0" driven by instance "puf_bd_i/processing_system7_0/inst/buffer_fclk_clk_0.FCLK_CLK_0_BUFG" located at site "BUFGCTRL_X0Y16"
+#startgroup
+create_pblock {CLKAG_puf_bd_i/processing_system7_0/inst/FCLK_CLK0}
+add_cells_to_pblock [get_pblocks  {CLKAG_puf_bd_i/processing_system7_0/inst/FCLK_CLK0}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="puf_bd_i/processing_system7_0/inst/FCLK_CLK0"}]]]
+resize_pblock [get_pblocks {CLKAG_puf_bd_i/processing_system7_0/inst/FCLK_CLK0}] -add {CLOCKREGION_X0Y1:CLOCKREGION_X0Y1 CLOCKREGION_X0Y2:CLOCKREGION_X0Y2 CLOCKREGION_X1Y1:CLOCKREGION_X1Y1 CLOCKREGION_X1Y2:CLOCKREGION_X1Y2}
+#endgroup

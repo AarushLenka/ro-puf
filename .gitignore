@@ -1,12 +1,11 @@
 # Vivado generated/build output (safe to ignore — all regeneratable)
 *.cache/
-*.gen/
+#*.gen/
 *.hw/
 *.ip_user_files/
-*.runs/
 *.sim/
-*.bit
-*.hwh
+#*.bit
+#*.hwh
 *.xsa
 *.jou
 *.log

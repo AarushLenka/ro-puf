@@ -11,7 +11,7 @@
 // INSTANCE_ID is carried into a net name below so each instance is also
 // textually distinct in the netlist.
 
-(* DONT_TOUCH = "TRUE" *)
+(* DONT_TOUCH = "TRUE", ALLOW_COMBINATORIAL_LOOPS = "TRUE" *)
 module ring_osc #(
     parameter INSTANCE_ID = 0  // forces synthesis to keep every instance distinct
 )(

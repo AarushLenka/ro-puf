@@ -1,0 +1,260 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Mon Aug 24 19:12:03 2026
+# Process ID         : 532
+# Current directory  : C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1
+# Command line       : vivado.exe -log puf_bd_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source puf_bd_wrapper.tcl
+# Log file           : C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/puf_bd_wrapper.vds
+# Journal file       : C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1\vivado.jou
+# Running On         : LAPTOP-QLGDPTAA
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz
+# CPU Frequency      : 2995 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 8317 MB
+# Swap memory        : 11392 MB
+# Total Virtual      : 19710 MB
+# Available Virtual  : 4001 MB
+#-----------------------------------------------------------
+source puf_bd_wrapper.tcl -notrace
+create_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 517.652 ; gain = 211.668
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/2025.1/Vivado/data/ip'.
+Command: synth_design -top puf_bd_wrapper -part xc7z020clg400-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 16980
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1284.082 ; gain = 491.082
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_wrapper' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/hdl/puf_bd_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:13]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_gpio_0_1' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_gpio_0_1' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_gpio_1_1' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_1_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_gpio_1_1' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_1_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_smc_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_smc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_smc_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_smc_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'M00_AXI_awprot' of module 'puf_bd_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:201]
+WARNING: [Synth 8-7071] port 'M00_AXI_arprot' of module 'puf_bd_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:201]
+WARNING: [Synth 8-7071] port 'M01_AXI_awprot' of module 'puf_bd_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:201]
+WARNING: [Synth 8-7071] port 'M01_AXI_arprot' of module 'puf_bd_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:201]
+WARNING: [Synth 8-7023] instance 'axi_smc' of module 'puf_bd_axi_smc_0' has 78 connections declared, but only 74 given [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:201]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_processing_system7_0_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_processing_system7_0_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_puf_top_0_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_puf_top_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_puf_top_0_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_puf_top_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_rst_ps7_0_50M_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_rst_ps7_0_50M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_rst_ps7_0_50M_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-532-LAPTOP-QLGDPTAA/realtime/puf_bd_rst_ps7_0_50M_0_stub.v:6]
+WARNING: [Synth 8-7071] port 'mb_reset' of module 'puf_bd_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:347]
+WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'puf_bd_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:347]
+WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'puf_bd_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:347]
+WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'puf_bd_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:347]
+WARNING: [Synth 8-7023] instance 'rst_ps7_0_50M' of module 'puf_bd_rst_ps7_0_50M_0' has 10 connections declared, but only 6 given [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:347]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd' (0#1) [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_wrapper' (0#1) [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/hdl/puf_bd_wrapper.v:13]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1398.133 ; gain = 605.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1398.133 ; gain = 605.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1398.133 ; gain = 605.133
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1398.133 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_processing_system7_0_0/puf_bd_processing_system7_0_0/puf_bd_processing_system7_0_0_in_context.xdc] for cell 'puf_bd_i/processing_system7_0'
+Finished Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_processing_system7_0_0/puf_bd_processing_system7_0_0/puf_bd_processing_system7_0_0_in_context.xdc] for cell 'puf_bd_i/processing_system7_0'
+Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_axi_gpio_0_1/puf_bd_axi_gpio_0_1/puf_bd_axi_gpio_0_1_in_context.xdc] for cell 'puf_bd_i/axi_gpio_0'
+Finished Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_axi_gpio_0_1/puf_bd_axi_gpio_0_1/puf_bd_axi_gpio_0_1_in_context.xdc] for cell 'puf_bd_i/axi_gpio_0'
+Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_axi_gpio_1_1/puf_bd_axi_gpio_1_1/puf_bd_axi_gpio_1_1_in_context.xdc] for cell 'puf_bd_i/axi_gpio_1'
+Finished Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_axi_gpio_1_1/puf_bd_axi_gpio_1_1/puf_bd_axi_gpio_1_1_in_context.xdc] for cell 'puf_bd_i/axi_gpio_1'
+Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_axi_smc_0/puf_bd_axi_smc_0/puf_bd_axi_smc_0_in_context.xdc] for cell 'puf_bd_i/axi_smc'
+Finished Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_axi_smc_0/puf_bd_axi_smc_0/puf_bd_axi_smc_0_in_context.xdc] for cell 'puf_bd_i/axi_smc'
+Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_rst_ps7_0_50M_0/puf_bd_rst_ps7_0_50M_0/puf_bd_rst_ps7_0_50M_0_in_context.xdc] for cell 'puf_bd_i/rst_ps7_0_50M'
+Finished Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_rst_ps7_0_50M_0/puf_bd_rst_ps7_0_50M_0/puf_bd_rst_ps7_0_50M_0_in_context.xdc] for cell 'puf_bd_i/rst_ps7_0_50M'
+Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_puf_top_0_0/puf_bd_puf_top_0_0/puf_bd_puf_top_0_0_in_context.xdc] for cell 'puf_bd_i/puf_top_0'
+Finished Parsing XDC File [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_puf_top_0_0/puf_bd_puf_top_0_0/puf_bd_puf_top_0_0_in_context.xdc] for cell 'puf_bd_i/puf_top_0'
+Parsing XDC File [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/dont_touch.xdc]
+Finished Parsing XDC File [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/dont_touch.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1398.133 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 1398.133 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1398.133 ; gain = 605.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1398.133 ; gain = 605.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1398.133 ; gain = 605.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 1398.133 ; gain = 605.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:20 ; elapsed = 00:00:21 . Memory (MB): peak = 1417.906 ; gain = 624.906
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1589.051 ; gain = 796.051
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1589.254 ; gain = 796.254
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 1599.461 ; gain = 806.461
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+------------------------------+----------+
+|      |BlackBox name                 |Instances |
++------+------------------------------+----------+
+|1     |puf_bd_axi_gpio_0_1           |         1|
+|2     |puf_bd_axi_gpio_1_1           |         1|
+|3     |puf_bd_axi_smc_0              |         1|
+|4     |puf_bd_processing_system7_0_0 |         1|
+|5     |puf_bd_puf_top_0_0            |         1|
+|6     |puf_bd_rst_ps7_0_50M_0        |         1|
++------+------------------------------+----------+
+
+Report Cell Usage: 
++------+----------------------------+------+
+|      |Cell                        |Count |
++------+----------------------------+------+
+|1     |puf_bd_axi_gpio_0           |     1|
+|2     |puf_bd_axi_gpio_1           |     1|
+|3     |puf_bd_axi_smc              |     1|
+|4     |puf_bd_processing_system7_0 |     1|
+|5     |puf_bd_puf_top_0            |     1|
+|6     |puf_bd_rst_ps7_0_50M        |     1|
++------+----------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:31 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1833.582 ; gain = 1040.582
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 1833.582 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1842.570 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 5988c380
+INFO: [Common 17-83] Releasing license: Synthesis
+31 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:43 . Memory (MB): peak = 1846.570 ; gain = 1309.875
+INFO: [Common 17-1381] The checkpoint 'C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/puf_bd_wrapper.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file puf_bd_wrapper_utilization_synth.rpt -pb puf_bd_wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Aug 24 19:13:03 2026...

@@ -1,0 +1,698 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Mon Aug 24 19:09:19 2026
+# Process ID         : 14484
+# Current directory  : C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/puf_bd_puf_top_0_0_synth_1
+# Command line       : vivado.exe -log puf_bd_puf_top_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source puf_bd_puf_top_0_0.tcl
+# Log file           : C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/puf_bd_puf_top_0_0_synth_1/puf_bd_puf_top_0_0.vds
+# Journal file       : C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/puf_bd_puf_top_0_0_synth_1\vivado.jou
+# Running On         : LAPTOP-QLGDPTAA
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : 11th Gen Intel(R) Core(TM) i3-1115G4 @ 3.00GHz
+# CPU Frequency      : 2995 MHz
+# CPU Physical cores : 2
+# CPU Logical cores  : 4
+# Host memory        : 8317 MB
+# Swap memory        : 13826 MB
+# Total Virtual      : 22144 MB
+# Available Virtual  : 4530 MB
+#-----------------------------------------------------------
+source puf_bd_puf_top_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:18 ; elapsed = 00:00:15 . Memory (MB): peak = 517.840 ; gain = 212.773
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/2025.1/Vivado/data/ip'.
+Command: synth_design -top puf_bd_puf_top_0_0 -part xc7z020clg400-1 -incremental_mode off -mode out_of_context
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Device 21-403] Loading part xc7z020clg400-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 14508
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 1253.836 ; gain = 491.484
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_puf_top_0_0' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_puf_top_0_0/synth/puf_bd_puf_top_0_0.v:53]
+INFO: [Synth 8-6157] synthesizing module 'puf_top' [C:/Users/HP/.vscode/ro-puf/verilog/puf_top.v:3]
+INFO: [Synth 8-6157] synthesizing module 'puf_driver' [C:/Users/HP/.vscode/ro-puf/verilog/puf_driver.v:16]
+INFO: [Synth 8-6155] done synthesizing module 'puf_driver' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/puf_driver.v:16]
+INFO: [Synth 8-6157] synthesizing module 'puf_array' [C:/Users/HP/.vscode/ro-puf/verilog/puf_array.v:7]
+INFO: [Synth 8-6157] synthesizing module 'puf_cell' [C:/Users/HP/.vscode/ro-puf/verilog/puf_cell.v:3]
+	Parameter CELL_ID bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'ring_osc' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 0 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'clock_div_2' [C:/Users/HP/.vscode/ro-puf/verilog/clock_div_2.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'clock_div_2' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/clock_div_2.v:3]
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized0' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 1 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized0' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized1' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 2 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized1' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized2' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 3 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized2' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized3' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized3' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized4' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 5 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized4' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized5' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 6 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized5' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized6' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 7 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized6' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized7' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized7' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized8' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 9 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized8' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized9' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 10 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized9' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized10' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 11 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized10' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized11' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 12 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized11' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized12' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 13 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized12' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized13' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 14 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized13' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized14' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 15 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized14' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized15' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized15' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized16' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 17 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized16' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized17' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 18 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized17' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized18' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 19 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized18' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized19' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 20 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized19' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized20' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 21 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized20' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized21' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 22 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized21' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized22' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 23 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized22' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized23' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 24 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized23' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized24' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 25 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized24' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized25' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 26 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized25' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized26' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 27 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized26' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized27' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 28 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized27' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized28' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 29 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized28' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized29' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 30 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized29' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized30' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 31 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized30' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'puf_cell' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/puf_cell.v:3]
+INFO: [Synth 8-6157] synthesizing module 'puf_cell__parameterized0' [C:/Users/HP/.vscode/ro-puf/verilog/puf_cell.v:3]
+	Parameter CELL_ID bound to: 1 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized31' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 32 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized31' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized32' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 33 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized32' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized33' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 34 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized33' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized34' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 35 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized34' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized35' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 36 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized35' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized36' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 37 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized36' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized37' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 38 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized37' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized38' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 39 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized38' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized39' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 40 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized39' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized40' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 41 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized40' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized41' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 42 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized41' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized42' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 43 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized42' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized43' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 44 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized43' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized44' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 45 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized44' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized45' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 46 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized45' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized46' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 47 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized46' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized47' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 48 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized47' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized48' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 49 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized48' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized49' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 50 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized49' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized50' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 51 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized50' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized51' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 52 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized51' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized52' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 53 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized52' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized53' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 54 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized53' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized54' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 55 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized54' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized55' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 56 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized55' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized56' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 57 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized56' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized57' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 58 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized57' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized58' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 59 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized58' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized59' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 60 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized59' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized60' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 61 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized60' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized61' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 62 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized61' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized62' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 63 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized62' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6155] done synthesizing module 'puf_cell__parameterized0' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/puf_cell.v:3]
+INFO: [Synth 8-6157] synthesizing module 'puf_cell__parameterized1' [C:/Users/HP/.vscode/ro-puf/verilog/puf_cell.v:3]
+	Parameter CELL_ID bound to: 2 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized63' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 64 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized63' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized64' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 65 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized64' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized65' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 66 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized65' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized66' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 67 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized66' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized67' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 68 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized67' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized68' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 69 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized68' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized69' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 70 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized69' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized70' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 71 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized70' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized71' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 72 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized71' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized72' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 73 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized72' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized73' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 74 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized73' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized74' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 75 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized74' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized75' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 76 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized75' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized76' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 77 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized76' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized77' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 78 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized77' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized78' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 79 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized78' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized79' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 80 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized79' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized80' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 81 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized80' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized81' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 82 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized81' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized82' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 83 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized82' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized83' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 84 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized83' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized84' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 85 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized84' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized85' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 86 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized85' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized86' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 87 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized86' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized87' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 88 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized87' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized88' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 89 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized88' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized89' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 90 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized89' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Synth 8-6157] synthesizing module 'ring_osc__parameterized90' [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Common 17-14] Message 'Synth 8-6157' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+	Parameter INSTANCE_ID bound to: 91 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized90' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 92 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized91' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 93 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized92' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 94 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized93' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+	Parameter INSTANCE_ID bound to: 95 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'ring_osc__parameterized94' (0#1) [C:/Users/HP/.vscode/ro-puf/verilog/ring_osc.v:14]
+INFO: [Common 17-14] Message 'Synth 8-6155' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+	Parameter CELL_ID bound to: 3 - type: integer 
+	Parameter INSTANCE_ID bound to: 96 - type: integer 
+	Parameter INSTANCE_ID bound to: 97 - type: integer 
+	Parameter INSTANCE_ID bound to: 98 - type: integer 
+	Parameter INSTANCE_ID bound to: 99 - type: integer 
+	Parameter INSTANCE_ID bound to: 100 - type: integer 
+	Parameter INSTANCE_ID bound to: 101 - type: integer 
+	Parameter INSTANCE_ID bound to: 102 - type: integer 
+	Parameter INSTANCE_ID bound to: 103 - type: integer 
+	Parameter INSTANCE_ID bound to: 104 - type: integer 
+	Parameter INSTANCE_ID bound to: 105 - type: integer 
+	Parameter INSTANCE_ID bound to: 106 - type: integer 
+	Parameter INSTANCE_ID bound to: 107 - type: integer 
+	Parameter INSTANCE_ID bound to: 108 - type: integer 
+	Parameter INSTANCE_ID bound to: 109 - type: integer 
+	Parameter INSTANCE_ID bound to: 110 - type: integer 
+	Parameter INSTANCE_ID bound to: 111 - type: integer 
+	Parameter INSTANCE_ID bound to: 112 - type: integer 
+	Parameter INSTANCE_ID bound to: 113 - type: integer 
+	Parameter INSTANCE_ID bound to: 114 - type: integer 
+	Parameter INSTANCE_ID bound to: 115 - type: integer 
+	Parameter INSTANCE_ID bound to: 116 - type: integer 
+	Parameter INSTANCE_ID bound to: 117 - type: integer 
+	Parameter INSTANCE_ID bound to: 118 - type: integer 
+	Parameter INSTANCE_ID bound to: 119 - type: integer 
+	Parameter INSTANCE_ID bound to: 120 - type: integer 
+	Parameter INSTANCE_ID bound to: 121 - type: integer 
+	Parameter INSTANCE_ID bound to: 122 - type: integer 
+	Parameter INSTANCE_ID bound to: 123 - type: integer 
+	Parameter INSTANCE_ID bound to: 124 - type: integer 
+	Parameter INSTANCE_ID bound to: 125 - type: integer 
+	Parameter INSTANCE_ID bound to: 126 - type: integer 
+	Parameter INSTANCE_ID bound to: 127 - type: integer 
+	Parameter CELL_ID bound to: 4 - type: integer 
+	Parameter INSTANCE_ID bound to: 128 - type: integer 
+	Parameter INSTANCE_ID bound to: 129 - type: integer 
+	Parameter INSTANCE_ID bound to: 130 - type: integer 
+	Parameter INSTANCE_ID bound to: 131 - type: integer 
+	Parameter INSTANCE_ID bound to: 132 - type: integer 
+	Parameter INSTANCE_ID bound to: 133 - type: integer 
+	Parameter INSTANCE_ID bound to: 134 - type: integer 
+	Parameter INSTANCE_ID bound to: 135 - type: integer 
+	Parameter INSTANCE_ID bound to: 136 - type: integer 
+	Parameter INSTANCE_ID bound to: 137 - type: integer 
+	Parameter INSTANCE_ID bound to: 138 - type: integer 
+	Parameter INSTANCE_ID bound to: 139 - type: integer 
+	Parameter INSTANCE_ID bound to: 140 - type: integer 
+	Parameter INSTANCE_ID bound to: 141 - type: integer 
+	Parameter INSTANCE_ID bound to: 142 - type: integer 
+	Parameter INSTANCE_ID bound to: 143 - type: integer 
+	Parameter INSTANCE_ID bound to: 144 - type: integer 
+	Parameter INSTANCE_ID bound to: 145 - type: integer 
+	Parameter INSTANCE_ID bound to: 146 - type: integer 
+	Parameter INSTANCE_ID bound to: 147 - type: integer 
+	Parameter INSTANCE_ID bound to: 148 - type: integer 
+	Parameter INSTANCE_ID bound to: 149 - type: integer 
+	Parameter INSTANCE_ID bound to: 150 - type: integer 
+	Parameter INSTANCE_ID bound to: 151 - type: integer 
+	Parameter INSTANCE_ID bound to: 152 - type: integer 
+	Parameter INSTANCE_ID bound to: 153 - type: integer 
+	Parameter INSTANCE_ID bound to: 154 - type: integer 
+	Parameter INSTANCE_ID bound to: 155 - type: integer 
+	Parameter INSTANCE_ID bound to: 156 - type: integer 
+	Parameter INSTANCE_ID bound to: 157 - type: integer 
+	Parameter INSTANCE_ID bound to: 158 - type: integer 
+	Parameter INSTANCE_ID bound to: 159 - type: integer 
+	Parameter CELL_ID bound to: 5 - type: integer 
+	Parameter INSTANCE_ID bound to: 160 - type: integer 
+	Parameter INSTANCE_ID bound to: 161 - type: integer 
+	Parameter INSTANCE_ID bound to: 162 - type: integer 
+	Parameter INSTANCE_ID bound to: 163 - type: integer 
+	Parameter INSTANCE_ID bound to: 164 - type: integer 
+	Parameter INSTANCE_ID bound to: 165 - type: integer 
+	Parameter INSTANCE_ID bound to: 166 - type: integer 
+	Parameter INSTANCE_ID bound to: 167 - type: integer 
+	Parameter INSTANCE_ID bound to: 168 - type: integer 
+	Parameter INSTANCE_ID bound to: 169 - type: integer 
+	Parameter INSTANCE_ID bound to: 170 - type: integer 
+	Parameter INSTANCE_ID bound to: 171 - type: integer 
+	Parameter INSTANCE_ID bound to: 172 - type: integer 
+	Parameter INSTANCE_ID bound to: 173 - type: integer 
+	Parameter INSTANCE_ID bound to: 174 - type: integer 
+	Parameter INSTANCE_ID bound to: 175 - type: integer 
+	Parameter INSTANCE_ID bound to: 176 - type: integer 
+	Parameter INSTANCE_ID bound to: 177 - type: integer 
+	Parameter INSTANCE_ID bound to: 178 - type: integer 
+	Parameter INSTANCE_ID bound to: 179 - type: integer 
+	Parameter INSTANCE_ID bound to: 180 - type: integer 
+	Parameter INSTANCE_ID bound to: 181 - type: integer 
+	Parameter INSTANCE_ID bound to: 182 - type: integer 
+	Parameter INSTANCE_ID bound to: 183 - type: integer 
+	Parameter INSTANCE_ID bound to: 184 - type: integer 
+	Parameter INSTANCE_ID bound to: 185 - type: integer 
+	Parameter INSTANCE_ID bound to: 186 - type: integer 
+	Parameter INSTANCE_ID bound to: 187 - type: integer 
+	Parameter INSTANCE_ID bound to: 188 - type: integer 
+	Parameter INSTANCE_ID bound to: 189 - type: integer 
+	Parameter INSTANCE_ID bound to: 190 - type: integer 
+	Parameter INSTANCE_ID bound to: 191 - type: integer 
+	Parameter CELL_ID bound to: 6 - type: integer 
+	Parameter INSTANCE_ID bound to: 192 - type: integer 
+	Parameter INSTANCE_ID bound to: 193 - type: integer 
+	Parameter INSTANCE_ID bound to: 194 - type: integer 
+	Parameter INSTANCE_ID bound to: 195 - type: integer 
+	Parameter INSTANCE_ID bound to: 196 - type: integer 
+	Parameter INSTANCE_ID bound to: 197 - type: integer 
+	Parameter INSTANCE_ID bound to: 198 - type: integer 
+	Parameter INSTANCE_ID bound to: 199 - type: integer 
+	Parameter INSTANCE_ID bound to: 200 - type: integer 
+	Parameter INSTANCE_ID bound to: 201 - type: integer 
+	Parameter INSTANCE_ID bound to: 202 - type: integer 
+	Parameter INSTANCE_ID bound to: 203 - type: integer 
+	Parameter INSTANCE_ID bound to: 204 - type: integer 
+	Parameter INSTANCE_ID bound to: 205 - type: integer 
+	Parameter INSTANCE_ID bound to: 206 - type: integer 
+	Parameter INSTANCE_ID bound to: 207 - type: integer 
+	Parameter INSTANCE_ID bound to: 208 - type: integer 
+	Parameter INSTANCE_ID bound to: 209 - type: integer 
+	Parameter INSTANCE_ID bound to: 210 - type: integer 
+	Parameter INSTANCE_ID bound to: 211 - type: integer 
+	Parameter INSTANCE_ID bound to: 212 - type: integer 
+	Parameter INSTANCE_ID bound to: 213 - type: integer 
+	Parameter INSTANCE_ID bound to: 214 - type: integer 
+	Parameter INSTANCE_ID bound to: 215 - type: integer 
+	Parameter INSTANCE_ID bound to: 216 - type: integer 
+	Parameter INSTANCE_ID bound to: 217 - type: integer 
+	Parameter INSTANCE_ID bound to: 218 - type: integer 
+	Parameter INSTANCE_ID bound to: 219 - type: integer 
+	Parameter INSTANCE_ID bound to: 220 - type: integer 
+	Parameter INSTANCE_ID bound to: 221 - type: integer 
+	Parameter INSTANCE_ID bound to: 222 - type: integer 
+	Parameter INSTANCE_ID bound to: 223 - type: integer 
+	Parameter CELL_ID bound to: 7 - type: integer 
+	Parameter INSTANCE_ID bound to: 224 - type: integer 
+	Parameter INSTANCE_ID bound to: 225 - type: integer 
+	Parameter INSTANCE_ID bound to: 226 - type: integer 
+	Parameter INSTANCE_ID bound to: 227 - type: integer 
+	Parameter INSTANCE_ID bound to: 228 - type: integer 
+	Parameter INSTANCE_ID bound to: 229 - type: integer 
+	Parameter INSTANCE_ID bound to: 230 - type: integer 
+	Parameter INSTANCE_ID bound to: 231 - type: integer 
+	Parameter INSTANCE_ID bound to: 232 - type: integer 
+	Parameter INSTANCE_ID bound to: 233 - type: integer 
+	Parameter INSTANCE_ID bound to: 234 - type: integer 
+	Parameter INSTANCE_ID bound to: 235 - type: integer 
+	Parameter INSTANCE_ID bound to: 236 - type: integer 
+	Parameter INSTANCE_ID bound to: 237 - type: integer 
+	Parameter INSTANCE_ID bound to: 238 - type: integer 
+	Parameter INSTANCE_ID bound to: 239 - type: integer 
+	Parameter INSTANCE_ID bound to: 240 - type: integer 
+	Parameter INSTANCE_ID bound to: 241 - type: integer 
+	Parameter INSTANCE_ID bound to: 242 - type: integer 
+	Parameter INSTANCE_ID bound to: 243 - type: integer 
+	Parameter INSTANCE_ID bound to: 244 - type: integer 
+	Parameter INSTANCE_ID bound to: 245 - type: integer 
+	Parameter INSTANCE_ID bound to: 246 - type: integer 
+	Parameter INSTANCE_ID bound to: 247 - type: integer 
+	Parameter INSTANCE_ID bound to: 248 - type: integer 
+	Parameter INSTANCE_ID bound to: 249 - type: integer 
+	Parameter INSTANCE_ID bound to: 250 - type: integer 
+	Parameter INSTANCE_ID bound to: 251 - type: integer 
+	Parameter INSTANCE_ID bound to: 252 - type: integer 
+	Parameter INSTANCE_ID bound to: 253 - type: integer 
+	Parameter INSTANCE_ID bound to: 254 - type: integer 
+	Parameter INSTANCE_ID bound to: 255 - type: integer 
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 1445.480 ; gain = 683.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:25 ; elapsed = 00:00:32 . Memory (MB): peak = 1445.480 ; gain = 683.129
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:32 . Memory (MB): peak = 1445.480 ; gain = 683.129
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.115 . Memory (MB): peak = 1445.480 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1494.504 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.183 . Memory (MB): peak = 1497.039 ; gain = 2.535
+INFO: [Designutils 20-5008] Incremental synthesis strategy off
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:48 ; elapsed = 00:01:01 . Memory (MB): peak = 1497.039 ; gain = 734.688
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg400-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:48 ; elapsed = 00:01:01 . Memory (MB): peak = 1497.039 ; gain = 734.688
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:01:02 . Memory (MB): peak = 1497.039 ; gain = 734.688
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:55 ; elapsed = 00:01:11 . Memory (MB): peak = 1497.039 ; gain = 734.688
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    6 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 32    
+	                6 Bit    Registers := 1     
+	                1 Bit    Registers := 271   
++---Muxes : 
+	   2 Input    6 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 5     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:12 ; elapsed = 00:01:40 . Memory (MB): peak = 1497.039 ; gain = 734.688
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:22 ; elapsed = 00:01:50 . Memory (MB): peak = 1611.727 ; gain = 849.375
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:22 ; elapsed = 00:01:50 . Memory (MB): peak = 1613.949 ; gain = 851.598
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:25 ; elapsed = 00:01:54 . Memory (MB): peak = 1624.520 ; gain = 862.168
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:30 ; elapsed = 00:02:00 . Memory (MB): peak = 1853.828 ; gain = 1091.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:30 ; elapsed = 00:02:00 . Memory (MB): peak = 1853.828 ; gain = 1091.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:31 ; elapsed = 00:02:00 . Memory (MB): peak = 1853.828 ; gain = 1091.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:31 ; elapsed = 00:02:00 . Memory (MB): peak = 1853.828 ; gain = 1091.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:31 ; elapsed = 00:02:00 . Memory (MB): peak = 1853.828 ; gain = 1091.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:31 ; elapsed = 00:02:00 . Memory (MB): peak = 1853.828 ; gain = 1091.477
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |CARRY4 |    80|
+|2     |LUT1   | 10257|
+|3     |LUT2   |   257|
+|4     |LUT3   |     1|
+|5     |LUT4   |   170|
+|6     |LUT6   |    70|
+|7     |MUXF7  |    32|
+|8     |MUXF8  |    16|
+|9     |FDCE   |   531|
+|10    |FDRE   |   512|
++------+-------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:31 ; elapsed = 00:02:00 . Memory (MB): peak = 1853.828 ; gain = 1091.477
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:59 ; elapsed = 00:01:51 . Memory (MB): peak = 1853.828 ; gain = 1039.918
+Synthesis Optimization Complete : Time (s): cpu = 00:01:31 ; elapsed = 00:02:01 . Memory (MB): peak = 1853.828 ; gain = 1091.477
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.047 . Memory (MB): peak = 1853.828 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 128 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1853.828 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 1816ec4a
+INFO: [Common 17-83] Releasing license: Synthesis
+220 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:38 ; elapsed = 00:02:14 . Memory (MB): peak = 1853.828 ; gain = 1318.711
+INFO: [Coretcl 2-1174] Renamed 523 cell refs.
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1853.828 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/puf_bd_puf_top_0_0_synth_1/puf_bd_puf_top_0_0.dcp' has been generated.
+INFO: [Vivado 12-24828] Executing command : report_utilization -file puf_bd_puf_top_0_0_utilization_synth.rpt -pb puf_bd_puf_top_0_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon Aug 24 19:12:00 2026...
