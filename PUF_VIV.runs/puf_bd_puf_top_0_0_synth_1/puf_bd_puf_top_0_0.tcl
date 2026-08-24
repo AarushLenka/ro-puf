@@ -56,6 +56,7 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "puf_bd_puf_top_0_0_synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 1
 set_param general.usePosixSpawnForFork 1
 set_msg_config -id {HDL-1065} -limit 10000
 set_param project.vivado.isBlockSynthRun true

@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Mon Aug 24 19:15:14 2026
+| Date         : Mon Aug 24 21:52:29 2026
 | Host         : LAPTOP-QLGDPTAA running 64-bit major release  (build 9200)
 | Command      : report_drc -file puf_bd_wrapper_drc_opted.rpt -pb puf_bd_wrapper_drc_opted.pb -rpx puf_bd_wrapper_drc_opted.rpx
 | Design       : puf_bd_wrapper
@@ -20,7 +20,7 @@ Table of Contents
 1. REPORT SUMMARY
 -----------------
             Netlist: netlist
-          Floorplan: checkpoint_puf_bd_wrapper
+          Floorplan: design_1
       Design limits: <entire design considered>
            Ruledeck: default
              Max checks: <unlimited>

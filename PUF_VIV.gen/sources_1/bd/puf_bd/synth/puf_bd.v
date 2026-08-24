@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-//Date        : Mon Aug 24 19:05:22 2026
+//Date        : Mon Aug 24 21:15:55 2026
 //Host        : LAPTOP-QLGDPTAA running 64-bit major release  (build 9200)
 //Command     : generate_target puf_bd.bd
 //Design      : puf_bd
@@ -10,7 +10,7 @@
 //--------------------------------------------------------------------------------
 `timescale 1 ps / 1 ps
 
-(* CORE_GENERATION_INFO = "puf_bd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=puf_bd,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=7,numReposBlks=7,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=2,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "puf_bd.hwdef" *) 
+(* CORE_GENERATION_INFO = "puf_bd,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=puf_bd,x_ipVersion=1.00.a,x_ipLanguage=VERILOG,numBlks=9,numReposBlks=9,numNonXlnxBlks=0,numHierBlks=0,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=1,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=2,da_board_cnt=2,da_ps7_cnt=1,synth_mode=Hierarchical}" *) (* HW_HANDOFF = "puf_bd.hwdef" *) 
 module puf_bd
    (DDR_addr,
     DDR_ba,
@@ -112,6 +112,8 @@ module puf_bd
   wire [3:0]axi_smc_M01_AXI_WSTRB;
   wire axi_smc_M01_AXI_WVALID;
   wire [8:0]ilconcat_0_dout;
+  wire [7:0]ilslice_0_Dout;
+  wire [0:0]ilslice_1_Dout;
   wire processing_system7_0_FCLK_CLK0;
   wire processing_system7_0_FCLK_RESET0_N;
   wire [31:0]processing_system7_0_M_AXI_GP0_ARADDR;
@@ -274,6 +276,8 @@ module puf_bd
         .aclk(processing_system7_0_FCLK_CLK0),
         .aresetn(rst_ps7_0_50M_peripheral_aresetn));
   assign ilconcat_0_dout = {puf_top_0_done, puf_top_0_response};
+  assign ilslice_0_Dout = axi_gpio_0_gpio_io_o[7:0];
+  assign ilslice_1_Dout = axi_gpio_0_gpio_io_o[8:8];
   puf_bd_processing_system7_0_0 processing_system7_0
        (.DDR_Addr(DDR_addr),
         .DDR_BankAddr(DDR_ba),
@@ -338,12 +342,12 @@ module puf_bd
         .PS_PORB(FIXED_IO_ps_porb),
         .PS_SRSTB(FIXED_IO_ps_srstb));
   puf_bd_puf_top_0_0 puf_top_0
-       (.challenge(axi_gpio_0_gpio_io_o[7:0]),
+       (.challenge(ilslice_0_Dout),
         .clk(processing_system7_0_FCLK_CLK0),
         .done(puf_top_0_done),
         .reset_n(rst_ps7_0_50M_peripheral_aresetn),
         .response(puf_top_0_response),
-        .start(axi_gpio_0_gpio_io_o[0]));
+        .start(ilslice_1_Dout));
   puf_bd_rst_ps7_0_50M_0 rst_ps7_0_50M
        (.aux_reset_in(1'b1),
         .dcm_locked(1'b1),

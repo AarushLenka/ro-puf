@@ -17,7 +17,9 @@
       "axi_smc": "",
       "rst_ps7_0_50M": "",
       "puf_top_0": "",
-      "ilconcat_0": ""
+      "ilconcat_0": "",
+      "ilslice_0": "",
+      "ilslice_1": ""
     },
     "interface_ports": {
       "DDR": {
@@ -536,10 +538,22 @@
           "challenge": {
             "direction": "I",
             "left": "7",
-            "right": "0"
+            "right": "0",
+            "parameters": {
+              "PortWidth": {
+                "value": "8",
+                "value_src": "user_prop"
+              }
+            }
           },
           "start": {
-            "direction": "I"
+            "direction": "I",
+            "parameters": {
+              "PortWidth": {
+                "value": "1",
+                "value_src": "user_prop"
+              }
+            }
           },
           "response": {
             "direction": "O",
@@ -559,6 +573,34 @@
           },
           "IN1_WIDTH": {
             "value": "1"
+          }
+        }
+      },
+      "ilslice_0": {
+        "vlnv": "xilinx.com:inline_hdl:ilslice:1.0",
+        "parameters": {
+          "DIN_TO": {
+            "value": "0"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
+          },
+          "DOUT_WIDTH": {
+            "value": "8"
+          }
+        }
+      },
+      "ilslice_1": {
+        "vlnv": "xilinx.com:inline_hdl:ilslice:1.0",
+        "parameters": {
+          "DIN_FROM": {
+            "value": "8"
+          },
+          "DIN_TO": {
+            "value": "8"
+          },
+          "DIN_WIDTH": {
+            "value": "9"
           }
         }
       }
@@ -611,14 +653,26 @@
       "axi_gpio_0_gpio_io_o": {
         "ports": [
           "axi_gpio_0/gpio_io_o",
-          "puf_top_0/challenge",
-          "puf_top_0/start"
+          "ilslice_0/Din",
+          "ilslice_1/Din"
         ]
       },
       "ilconcat_0_dout": {
         "ports": [
           "ilconcat_0/dout",
           "axi_gpio_1/gpio_io_i"
+        ]
+      },
+      "ilslice_0_Dout": {
+        "ports": [
+          "ilslice_0/Dout",
+          "puf_top_0/challenge"
+        ]
+      },
+      "ilslice_1_Dout": {
+        "ports": [
+          "ilslice_1/Dout",
+          "puf_top_0/start"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {

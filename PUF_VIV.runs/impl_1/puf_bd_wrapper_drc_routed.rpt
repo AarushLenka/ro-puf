@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2025.1 (win64) Build 6140274 Thu May 22 00:12:29 MDT 2025
-| Date         : Mon Aug 24 19:16:26 2026
+| Date         : Mon Aug 24 21:55:42 2026
 | Host         : LAPTOP-QLGDPTAA running 64-bit major release  (build 9200)
 | Command      : report_drc -file puf_bd_wrapper_drc_routed.rpt -pb puf_bd_wrapper_drc_routed.pb -rpx puf_bd_wrapper_drc_routed.rpx
 | Design       : puf_bd_wrapper
@@ -20,7 +20,7 @@ Table of Contents
 1. REPORT SUMMARY
 -----------------
             Netlist: netlist
-          Floorplan: checkpoint_puf_bd_wrapper
+          Floorplan: design_1
       Design limits: <entire design considered>
            Ruledeck: default
              Max checks: <unlimited>
@@ -5751,20 +5751,20 @@ Related violations: <none>
 RTSTAT-10#1 Warning
 No routable loads  
 8207 net(s) have no routable loads. The problem bus(es) and/or net(s) are puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[15].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[0].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g0[1].ro/id_tag[31:0],
 puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[10].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g0[14].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[2].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[8].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g1[14].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[3].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[4].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[0].cell_inst/g1[6].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[1].cell_inst/g1[4].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[12].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[3].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[2].cell_inst/g0[5].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[12].ro/id_tag[31:0],
 puf_bd_i/puf_top_0/inst/array/cells[3].cell_inst/g0[14].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[1].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[4].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[4].cell_inst/g1[6].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g1[13].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[0].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[12].ro/id_tag[31:0],
-puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[15].ro/id_tag[31:0]
+puf_bd_i/puf_top_0/inst/array/cells[5].cell_inst/g0[5].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g0[12].ro/id_tag[31:0],
+puf_bd_i/puf_top_0/inst/array/cells[7].cell_inst/g1[3].ro/id_tag[31:0]
  (the first 15 of 271 listed).
 Related violations: <none>
 

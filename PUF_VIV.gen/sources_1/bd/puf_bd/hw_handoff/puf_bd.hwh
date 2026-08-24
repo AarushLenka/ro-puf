@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Aug 24 19:05:45 2026" VIVADOVERSION="2025.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Aug 24 21:16:00 2026" VIVADOVERSION="2025.1">
 
   <SYSTEMINFO ARCH="zynq" DEVICE="7z020" NAME="puf_bd" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -1585,6 +1585,46 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
+    <MODULE COREREVISION="0" FULLNAME="/ilslice_0" HWVERSION="2.0" INSTANCE="ilslice_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="7"/>
+        <PARAMETER NAME="DIN_TO" VALUE="0"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="puf_bd_ilslice_0_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="8"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="7" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="ilslice_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="puf_top_0" PORT="challenge"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
+    <MODULE COREREVISION="0" FULLNAME="/ilslice_1" HWVERSION="2.0" INSTANCE="ilslice_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="xlslice" VLNV="xilinx.com:ip:xlslice:2.0">
+      <DOCUMENTS/>
+      <PARAMETERS>
+        <PARAMETER NAME="DIN_FROM" VALUE="8"/>
+        <PARAMETER NAME="DIN_TO" VALUE="8"/>
+        <PARAMETER NAME="DIN_WIDTH" VALUE="9"/>
+        <PARAMETER NAME="Component_Name" VALUE="puf_bd_ilslice_1_0"/>
+        <PARAMETER NAME="DOUT_WIDTH" VALUE="1"/>
+        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
+      </PARAMETERS>
+      <PORTS>
+        <PORT DIR="I" LEFT="8" NAME="Din" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="O" LEFT="0" NAME="Dout" RIGHT="0" SIGIS="undef" SIGNAME="ilslice_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="puf_top_0" PORT="start"/>
+          </CONNECTIONS>
+        </PORT>
+      </PORTS>
+      <BUSINTERFACES/>
+    </MODULE>
     <MODULE CONFIGURABLE="TRUE" COREREVISION="7" FULLNAME="/processing_system7_0" HWVERSION="5.5" INSTANCE="processing_system7_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" IS_PL="FALSE" MODTYPE="processing_system7" VLNV="xilinx.com:ip:processing_system7:5.5">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=processing_system7;v=v5_3;d=pg082-processing-system7.pdf"/>
@@ -2978,7 +3018,11 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
-        <PORT DIR="I" LEFT="7" NAME="challenge" RIGHT="0" SIGIS="undef"/>
+        <PORT DIR="I" LEFT="7" NAME="challenge" RIGHT="0" SIGIS="undef" SIGNAME="ilslice_0_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ilslice_0" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="50000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
             <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_CLK0"/>
@@ -2999,7 +3043,11 @@
             <CONNECTION INSTANCE="ilconcat_0" PORT="In0"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="start" SIGIS="undef"/>
+        <PORT DIR="I" NAME="start" SIGIS="undef" SIGNAME="ilslice_1_Dout">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="ilslice_1" PORT="Dout"/>
+          </CONNECTIONS>
+        </PORT>
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
