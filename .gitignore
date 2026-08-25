@@ -8,7 +8,7 @@
 #*.hwh
 #*.xsa
 *.jou
-*.log
+#*.log
 *.str
 
 # Keep: *.xpr (project file) and *.srcs/ (source files + block design) ARE committed
