@@ -3,8 +3,8 @@
 # SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
 # IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
 # SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Mon Aug 24 21:41:01 2026
-# Process ID         : 13488
+# Start of session at: Mon Aug 24 22:52:57 2026
+# Process ID         : 4536
 # Current directory  : C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1
 # Command line       : vivado.exe -log puf_bd_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source puf_bd_wrapper.tcl
 # Log file           : C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/puf_bd_wrapper.vds
@@ -17,12 +17,12 @@
 # CPU Physical cores : 2
 # CPU Logical cores  : 4
 # Host memory        : 8317 MB
-# Swap memory        : 12471 MB
-# Total Virtual      : 20789 MB
-# Available Virtual  : 2140 MB
+# Swap memory        : 7784 MB
+# Total Virtual      : 16102 MB
+# Available Virtual  : 9237 MB
 #-----------------------------------------------------------
 source puf_bd_wrapper.tcl -notrace
-create_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:08 . Memory (MB): peak = 518.898 ; gain = 213.238
+create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 518.949 ; gain = 212.633
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/2025.1/Vivado/data/ip'.
@@ -38,49 +38,49 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 5796
+INFO: [Synth 8-7075] Helper process launched with PID 1816
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1291.820 ; gain = 496.594
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1291.648 ; gain = 493.145
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'puf_bd_wrapper' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/hdl/puf_bd_wrapper.v:13]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_wrapper' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/hdl/puf_bd_wrapper.v:13]
 INFO: [Synth 8-6157] synthesizing module 'puf_bd' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:13]
-INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_gpio_0_1' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_0_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_gpio_0_1' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_0_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_gpio_1_1' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_1_1_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_gpio_1_1' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_1_1_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_smc_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_smc_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_smc_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_smc_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_gpio_0_1' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_gpio_0_1' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_0_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_gpio_1_1' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_1_1_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_gpio_1_1' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_gpio_1_1_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_axi_smc_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_smc_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_axi_smc_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_axi_smc_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'M00_AXI_awprot' of module 'puf_bd_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:203]
 WARNING: [Synth 8-7071] port 'M00_AXI_arprot' of module 'puf_bd_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:203]
 WARNING: [Synth 8-7071] port 'M01_AXI_awprot' of module 'puf_bd_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:203]
 WARNING: [Synth 8-7071] port 'M01_AXI_arprot' of module 'puf_bd_axi_smc_0' is unconnected for instance 'axi_smc' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:203]
 WARNING: [Synth 8-7023] instance 'axi_smc' of module 'puf_bd_axi_smc_0' has 78 connections declared, but only 74 given [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:203]
-INFO: [Synth 8-6157] synthesizing module 'puf_bd_processing_system7_0_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_processing_system7_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'puf_bd_processing_system7_0_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_processing_system7_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'puf_bd_puf_top_0_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_puf_top_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'puf_bd_puf_top_0_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_puf_top_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'puf_bd_rst_ps7_0_50M_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_rst_ps7_0_50M_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'puf_bd_rst_ps7_0_50M_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-13488-LAPTOP-QLGDPTAA/realtime/puf_bd_rst_ps7_0_50M_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_processing_system7_0_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_processing_system7_0_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_processing_system7_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_puf_top_0_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_puf_top_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_puf_top_0_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_puf_top_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'puf_bd_rst_ps7_0_50M_0' [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_rst_ps7_0_50M_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_rst_ps7_0_50M_0' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/.Xil/Vivado-4536-LAPTOP-QLGDPTAA/realtime/puf_bd_rst_ps7_0_50M_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'mb_reset' of module 'puf_bd_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:351]
 WARNING: [Synth 8-7071] port 'bus_struct_reset' of module 'puf_bd_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:351]
 WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'puf_bd_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:351]
 WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'puf_bd_rst_ps7_0_50M_0' is unconnected for instance 'rst_ps7_0_50M' [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:351]
 WARNING: [Synth 8-7023] instance 'rst_ps7_0_50M' of module 'puf_bd_rst_ps7_0_50M_0' has 10 connections declared, but only 6 given [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:351]
 INFO: [Synth 8-6155] done synthesizing module 'puf_bd' (0#1) [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/synth/puf_bd.v:13]
-INFO: [Synth 8-6155] done synthesizing module 'puf_bd_wrapper' (0#1) [c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/hdl/puf_bd_wrapper.v:13]
+INFO: [Synth 8-6155] done synthesizing module 'puf_bd_wrapper' (0#1) [C:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/hdl/puf_bd_wrapper.v:13]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1405.180 ; gain = 609.953
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1405.492 ; gain = 606.988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1405.180 ; gain = 609.953
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1405.492 ; gain = 606.988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:13 . Memory (MB): peak = 1405.180 ; gain = 609.953
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1405.492 ; gain = 606.988
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1405.180 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1405.492 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -101,31 +101,31 @@ Parsing XDC File [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/dont_touch.xdc
 Finished Parsing XDC File [C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1405.180 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1405.492 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.044 . Memory (MB): peak = 1405.180 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.020 . Memory (MB): peak = 1405.492 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 1405.180 ; gain = 609.953
+Finished Constraint Validation : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1405.492 ; gain = 606.988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 1405.180 ; gain = 609.953
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1405.492 ; gain = 606.988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:32 . Memory (MB): peak = 1405.180 ; gain = 609.953
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1405.492 ; gain = 606.988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:33 . Memory (MB): peak = 1405.180 ; gain = 609.953
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1405.492 ; gain = 606.988
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -148,25 +148,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:31 ; elapsed = 00:00:39 . Memory (MB): peak = 1421.320 ; gain = 626.094
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 1412.969 ; gain = 614.465
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:48 ; elapsed = 00:01:00 . Memory (MB): peak = 1590.699 ; gain = 795.473
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1589.457 ; gain = 790.953
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:48 ; elapsed = 00:01:00 . Memory (MB): peak = 1590.848 ; gain = 795.621
+Finished Timing Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1589.941 ; gain = 791.438
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:48 ; elapsed = 00:01:00 . Memory (MB): peak = 1600.617 ; gain = 805.391
+Finished Technology Mapping : Time (s): cpu = 00:00:24 ; elapsed = 00:00:27 . Memory (MB): peak = 1600.113 ; gain = 801.609
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -184,37 +184,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:59 ; elapsed = 00:01:12 . Memory (MB): peak = 1835.805 ; gain = 1040.578
+Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1834.398 ; gain = 1035.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:59 ; elapsed = 00:01:12 . Memory (MB): peak = 1835.805 ; gain = 1040.578
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1834.398 ; gain = 1035.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:59 ; elapsed = 00:01:12 . Memory (MB): peak = 1835.805 ; gain = 1040.578
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1834.398 ; gain = 1035.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:59 ; elapsed = 00:01:12 . Memory (MB): peak = 1835.805 ; gain = 1040.578
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1834.398 ; gain = 1035.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:59 ; elapsed = 00:01:12 . Memory (MB): peak = 1835.805 ; gain = 1040.578
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1834.398 ; gain = 1035.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:59 ; elapsed = 00:01:12 . Memory (MB): peak = 1835.805 ; gain = 1040.578
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1834.398 ; gain = 1035.895
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -244,16 +244,16 @@ Report Cell Usage:
 |6     |puf_bd_rst_ps7_0_50M        |     1|
 +------+----------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:59 ; elapsed = 00:01:12 . Memory (MB): peak = 1835.805 ; gain = 1040.578
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:30 ; elapsed = 00:00:33 . Memory (MB): peak = 1834.398 ; gain = 1035.895
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:46 ; elapsed = 00:01:09 . Memory (MB): peak = 1835.805 ; gain = 1040.578
-Synthesis Optimization Complete : Time (s): cpu = 00:00:59 ; elapsed = 00:01:13 . Memory (MB): peak = 1835.805 ; gain = 1040.578
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:22 ; elapsed = 00:00:31 . Memory (MB): peak = 1834.398 ; gain = 1035.895
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 1834.398 ; gain = 1035.895
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1835.805 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1834.398 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1848.582 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1834.398 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -261,7 +261,7 @@ Synth Design complete | Checksum: b3954f93
 INFO: [Common 17-83] Releasing license: Synthesis
 37 Infos, 11 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:07 ; elapsed = 00:01:29 . Memory (MB): peak = 1852.566 ; gain = 1287.160
+synth_design: Time (s): cpu = 00:00:36 ; elapsed = 00:00:57 . Memory (MB): peak = 1834.398 ; gain = 1270.188
 INFO: [Common 17-1381] The checkpoint 'C:/Users/HP/.vscode/ro-puf/PUF_VIV.runs/synth_1/puf_bd_wrapper.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file puf_bd_wrapper_utilization_synth.rpt -pb puf_bd_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Aug 24 21:42:49 2026...
+INFO: [Common 17-206] Exiting Vivado at Mon Aug 24 22:54:05 2026...

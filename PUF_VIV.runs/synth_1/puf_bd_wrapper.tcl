@@ -56,9 +56,8 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 1
 set_param general.usePosixSpawnForFork 1
-set_msg_config -id {HDL-1065} -limit 10000
+set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z020clg400-1
 
@@ -75,7 +74,7 @@ set_property ip_output_repo c:/Users/HP/.vscode/ro-puf/PUF_VIV.cache/ip [current
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
-read_verilog -library xil_defaultlib c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/hdl/puf_bd_wrapper.v
+read_verilog -library xil_defaultlib C:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/hdl/puf_bd_wrapper.v
 add_files C:/Users/HP/.vscode/ro-puf/PUF_VIV.srcs/sources_1/bd/puf_bd/puf_bd.bd
 set_property used_in_implementation false [get_files -all c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_processing_system7_0_0/puf_bd_processing_system7_0_0.xdc]
 set_property used_in_implementation false [get_files -all c:/Users/HP/.vscode/ro-puf/PUF_VIV.gen/sources_1/bd/puf_bd/ip/puf_bd_axi_gpio_0_1/puf_bd_axi_gpio_0_1_board.xdc]

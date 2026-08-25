@@ -1,20 +1,10 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="HP" Host="LAPTOP-QLGDPTAA" Pid="15464" HostCore="4" HostMemory="08317952000">
+    <Process Command="vivado.bat" Owner="HP" Host="LAPTOP-QLGDPTAA" Pid="4124" HostCore="4" HostMemory="08317952000">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="HP" Host="LAPTOP-QLGDPTAA" Pid="4012" HostCore="4" HostMemory="08317952000">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="HP" Host="LAPTOP-QLGDPTAA" Pid="2536" HostCore="4" HostMemory="08317952000">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="HP" Host="LAPTOP-QLGDPTAA" Pid="16804" HostCore="4" HostMemory="08317952000">
+    <Process Command="vivado.bat" Owner="HP" Host="LAPTOP-QLGDPTAA" Pid="12872" HostCore="4" HostMemory="08317952000">
     </Process>
 </ProcessHandle>
