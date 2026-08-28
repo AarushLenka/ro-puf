@@ -1,9 +1,16 @@
 # Trains one logistic regression model per response bit and measures how
 # accurately it predicts responses it never trained on.
+#
+# The hardware does not treat the challenge as eight independent binary
+# features. C[3:0] selects one oscillator from bank 0 and C[7:4] selects one
+# oscillator from bank 1; each response bit is the result of racing that pair.
+# The model below therefore uses a signed one-hot pair encoding so it can learn
+# one latent speed per oscillator and compare the selected pair.
 
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
+from sklearn.dummy import DummyClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
@@ -16,30 +23,75 @@ os.makedirs('plots',  exist_ok=True)
 df = pd.read_csv('data/crp_dataset.csv')
 print(f"Loaded {len(df)} CRPs.")
 
-def int_to_bits(value: int, n_bits: int = 8) -> list:
-    """8-bit integer -> list of 8 individual bits (MSB first)."""
-    return [(value >> (n_bits - 1 - i)) & 1 for i in range(n_bits)]
+def pair_features(challenges: np.ndarray) -> np.ndarray:
+    """Encode the two 4-bit oscillator selectors as a signed one-hot pair.
 
-# X: one row per challenge, 8 columns (the bit-expanded challenge)
-X = np.array([int_to_bits(c) for c in df['challenge']])
+    A row has one +1 for the oscillator selected from bank 0 and one -1 for
+    the oscillator selected from bank 1. A linear score is therefore:
+
+        score = speed_bank0[selected0] - speed_bank1[selected1]
+
+    which matches the comparison performed by ``puf_cell.v``. This is much
+    more expressive than feeding the eight challenge bits directly, because
+    oscillator identities are not ordered by their binary index.
+    """
+    challenges = np.asarray(challenges, dtype=np.int64)
+    if np.any((challenges < 0) | (challenges > 0xFF)):
+        raise ValueError("challenges must be 8-bit integers")
+
+    selected0 = challenges & 0x0F       # hardware C[3:0]
+    selected1 = (challenges >> 4) & 0x0F  # hardware C[7:4]
+    features = np.zeros((len(challenges), 32), dtype=np.float64)
+    rows = np.arange(len(challenges))
+    features[rows, selected0] = 1.0
+    features[rows, 16 + selected1] = -1.0
+    return features
+
+
+# X: one row per challenge, with one feature for each of the 32 oscillators.
+X = pair_features(df['challenge'].to_numpy())
 # y: one row per challenge, 8 columns (the 8 response bits)
-y = np.array([[(r >> bit) & 1 for bit in range(8)] for r in df['response']])
+y = np.array([[(int(r) >> bit) & 1 for bit in range(8)] for r in df['response']])
+
+# Majority voting in 01_collect_crps.py removes most measurement noise, but
+# ``stability`` still identifies labels that were close races. Giving those
+# examples less weight prevents a few noisy labels from moving an oscillator's
+# learned speed in the wrong direction.
+sample_weight = (
+    pd.to_numeric(df.get('stability', pd.Series(1.0, index=df.index)), errors='coerce')
+    .fillna(1.0)
+    .clip(lower=0.1, upper=1.0)
+    .to_numpy(dtype=np.float64)
+)
 
 print(f"Feature matrix: {X.shape}, label matrix: {y.shape}")
 
 # ── Attack at increasing training-set sizes ─────────────────────────────
 training_sizes = [20, 40, 80, 120, 160, 200]
+MODEL_C = 30.0  # lightly regularized: collected CRPs are mostly deterministic
 results = []
 
 for n_train in training_sizes:
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, train_size=n_train, random_state=42
+    X_train, X_test, y_train, y_test, weight_train, _ = train_test_split(
+        X, y, sample_weight, train_size=n_train, random_state=42
     )
 
     models = []
     for bit in range(8):
-        m = LogisticRegression(max_iter=1000)
-        m.fit(X_train, y_train[:, bit])
+        # LogisticRegression cannot fit a one-class target. This fallback is
+        # useful for small training sets and keeps the experiment reproducible
+        # on response bits that happen to be constant in one split.
+        if np.unique(y_train[:, bit]).size < 2:
+            m = DummyClassifier(strategy='most_frequent')
+            m.fit(X_train, y_train[:, bit])
+        else:
+            m = LogisticRegression(
+                C=MODEL_C,
+                fit_intercept=True,
+                max_iter=2000,
+                solver='lbfgs'
+            )
+            m.fit(X_train, y_train[:, bit], sample_weight=weight_train)
         models.append(m)
 
     per_bit_acc = [
